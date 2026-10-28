@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CramPanda — Study Smarter with Your Free Socratic AI Panda Tutor</title>
+  <meta name="description" content="CramPanda (crampanda.com): Study smarter with your free Socratic AI Panda Tutor across SAT, ACT, AP, LSAT, MCAT, GRE, GMAT, NCLEX, Bar, and ASVAB. 15 free questions/day + 10 Socratic AI tutor turns/day. 100% original blueprint-calibrated items." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070b16;
+      --bg-elev: #0d1426;
+      --card: #111a30;
+      --card-alt: #16223f;
+      --card-hover: #1b2a4d;
+      --border: #24355e;
+      --border-soft: rgba(148, 163, 184, 0.14);
+      --text: #f8fafc;
+      --muted: #9fb0d0;
+      --accent: #10b981;
+      --accent-bright: #34d399;
+      --accent-glow: rgba(16, 185, 129, 0.22);
+      --amber: #f59e0b;
+      --amber-soft: rgba(245, 158, 11, 0.14);
+      --indigo: #6366f1;
+      --indigo-soft: rgba(99, 102, 241, 0.16);
+      --danger: #f87171;
+      --danger-soft: rgba(248, 113, 113, 0.14);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background:
+        radial-gradient(900px 420px at 18% -5%, rgba(16, 185, 129, 0.16), transparent 65%),
+        radial-gradient(850px 420px at 85% 0%, rgba(99, 102, 241, 0.15), transparent 65%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+    /* Top Announcement Strip */
+    .top-strip {
+      background: linear-gradient(90deg, rgba(16, 185, 129, 0.15), rgba(99, 102, 241, 0.15));
+      border-bottom: 1px solid var(--border-soft);
+      font-size: 0.81rem;
+      padding: 8px 0;
+      color: var(--muted);
+    }
+    .top-strip-inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    }
+    .top-strip strong { color: var(--accent-bright); font-weight: 700; }
+
+    /* Sticky Navbar */
+    header {
+      border-bottom: 1px solid var(--border-soft);
+      background: rgba(7, 11, 22, 0.88);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 13px 0; gap: 16px; flex-wrap: wrap;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.35rem;
+      letter-spacing: -0.03em; color: var(--text); text-decoration: none;
+    }
+    .brand-logo-wrap {
+      width: 40px; height: 40px; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(16,185,129,0.22), rgba(99,102,241,0.22));
+      border: 1px solid rgba(52, 211, 153, 0.45);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.18);
+    }
+    .brand-badge {
+      background: rgba(16, 185, 129, 0.15); color: var(--accent-bright);
+      border: 1px solid rgba(52, 211, 153, 0.38);
+      font-size: 0.72rem; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+      letter-spacing: 0.03em;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 18px; font-size: 0.88rem; font-weight: 600;
+    }
+    .nav-links a { color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--text); }
+    .allowance-bar {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+    .pill {
+      background: var(--card); border: 1px solid var(--border);
+      padding: 6px 12px; border-radius: 999px; font-size: 0.8rem; color: var(--muted);
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .pill strong { color: var(--accent-bright); font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; }
+    .dot-live {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--accent-bright);
+      box-shadow: 0 0 8px var(--accent-bright);
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 10px 18px; border-radius: 10px; font-weight: 700; font-size: 0.9rem;
+      cursor: pointer; border: none; text-decoration: none; transition: all 0.15s ease;
+      font-family: inherit;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+      color: #042117;
+      box-shadow: 0 4px 18px rgba(16, 185, 129, 0.28);
+    }
+    .btn-primary:hover { box-shadow: 0 6px 22px rgba(16, 185, 129, 0.42); }
+    .btn-outline {
+      background: rgba(22, 34, 63, 0.65); color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--accent-bright); background: var(--card-hover); }
+    .btn-amber {
+      background: rgba(245, 158, 11, 0.15); color: #fcd34d;
+      border: 1px solid rgba(245, 158, 11, 0.45);
+    }
+    .btn-amber:hover { background: rgba(245, 158, 11, 0.25); }
+
+    /* Hero Section */
+    .hero { padding: 34px 0 20px; text-align: center; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.35);
+      color: var(--accent-bright);
+      padding: 5px 14px; border-radius: 999px;
+      font-size: 0.8rem; font-weight: 700; margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: clamp(2.05rem, 3.8vw, 3.15rem); font-weight: 800;
+      letter-spacing: -0.035em; max-width: 920px; margin: 0 auto 12px; line-height: 1.12;
+    }
+    .hero h1 .grad {
+      background: linear-gradient(90deg, #34d399 0%, #6ee7b7 45%, #818cf8 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      color: var(--muted); font-size: 1.04rem; max-width: 770px; margin: 0 auto 20px;
+    }
+
+    /* Exam Switcher Bar */
+    .switcher-wrap {
+      background: rgba(17, 26, 48, 0.85);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 12px 16px;
+      margin: 0 auto 22px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+    }
+    .switcher-label {
+      font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--muted); display: flex; align-items: center; gap: 6px;
+    }
+    .track-tabs {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; flex: 1;
+    }
+    .track-tab {
+      background: var(--bg-elev); border: 1px solid var(--border); color: var(--muted);
+      padding: 7px 13px; border-radius: 10px; font-weight: 700; font-size: 0.83rem;
+      cursor: pointer; transition: all 0.14s; display: inline-flex; align-items: center; gap: 6px;
+      text-decoration: none;
+    }
+    .track-tab .cat-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: #64748b;
+    }
+    .track-tab.hs .cat-dot { background: #38bdf8; }
+    .track-tab.grad .cat-dot { background: #34d399; }
+    .track-tab.lic .cat-dot { background: #f59e0b; }
+    .track-tab.active, .track-tab:hover {
+      background: rgba(16, 185, 129, 0.18); color: #ffffff;
+      border-color: var(--accent-bright);
+      box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.35);
+    }
+
+    /* Interactive Drill & Socratic Tutor Grid */
+    .drill-grid {
+      display: grid; grid-template-columns: 1.28fr 1fr; gap: 20px; margin-bottom: 42px;
+      align-items: stretch;
+    }
+    @media (max-width: 960px) { .drill-grid { grid-template-columns: 1fr; } }
+    .panel {
+      background: linear-gradient(180deg, rgba(22, 34, 63, 0.72) 0%, rgba(17, 26, 48, 0.95) 100%);
+      border: 1px solid var(--border);
+      border-radius: 18px; padding: 22px;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.32);
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .panel-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 14px; gap: 10px; flex-wrap: wrap;
+      padding-bottom: 12px; border-bottom: 1px solid var(--border-soft);
+    }
+    .tag {
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+      color: #fde68a; background: var(--amber-soft);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      padding: 4px 10px; border-radius: 7px;
+    }
+    .tag-green {
+      color: var(--accent-bright); background: rgba(16, 185, 129, 0.14);
+      border-color: rgba(52, 211, 153, 0.35);
+    }
+    .tag-indigo {
+      color: #a5b4fc; background: var(--indigo-soft);
+      border-color: rgba(99, 102, 241, 0.35);
+    }
+    .q-switcher {
+      display: inline-flex; align-items: center; gap: 5px;
+    }
+    .q-pill-btn {
+      background: var(--bg-elev); border: 1px solid var(--border); color: var(--muted);
+      font-size: 0.75rem; font-weight: 700; padding: 4px 9px; border-radius: 6px; cursor: pointer;
+    }
+    .q-pill-btn.active {
+      background: var(--accent); color: #042117; border-color: var(--accent-bright);
+    }
+
+    .question-meta {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.8rem; color: var(--muted); margin-bottom: 10px; flex-wrap: wrap; gap: 8px;
+    }
+    .question-stem {
+      font-size: 0.99rem; margin-bottom: 16px; color: var(--text);
+      background: rgba(7, 11, 22, 0.65); padding: 16px 18px; border-radius: 12px;
+      border: 1px solid var(--border); line-height: 1.6;
+      white-space: pre-line;
+    }
+    .choices { display: flex; flex-direction: column; gap: 9px; }
+    .choice-btn {
+      text-align: left; background: rgba(13, 20, 38, 0.9); border: 1px solid var(--border);
+      color: var(--text); padding: 11px 14px; border-radius: 11px; cursor: pointer;
+      font-size: 0.92rem; transition: all 0.14s; font-family: inherit;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .choice-btn:hover { border-color: var(--accent-bright); background: var(--card-hover); }
+    .choice-btn.correct {
+      border-color: var(--accent-bright);
+      background: rgba(16, 185, 129, 0.16);
+      box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.4);
+    }
+    .choice-btn.wrong {
+      border-color: var(--danger);
+      background: var(--danger-soft);
+    }
+    .choice-explain {
+      font-size: 0.82rem; padding-top: 6px; border-top: 1px dashed rgba(255,255,255,0.14);
+      color: #e2e8f0; display: none;
+    }
+    .choice-btn.show-explain .choice-explain { display: block; }
+
+    .drill-actions {
+      margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border-soft);
+      display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+
+    /* Socratic AI Tutor Right Column */
+    .socratic-steps {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px;
+    }
+    .step-btn {
+      background: var(--bg-elev); border: 1px solid var(--border); color: var(--muted);
+      padding: 8px 10px; border-radius: 10px; font-size: 0.77rem; font-weight: 700;
+      cursor: pointer; text-align: left; transition: all 0.15s; font-family: inherit;
+    }
+    .step-btn strong { display: block; color: var(--text); font-size: 0.8rem; margin-bottom: 2px; }
+    .step-btn:hover, .step-btn.unlocked {
+      border-color: var(--accent-bright);
+      background: rgba(16, 185, 129, 0.13);
+      color: var(--accent-bright);
+    }
+    .tutor-messages {
+      display: flex; flex-direction: column; gap: 10px; margin: 10px 0 14px;
+      min-height: 220px; max-height: 340px; overflow-y: auto; padding-right: 4px;
+    }
+    .bubble {
+      background: rgba(7, 11, 22, 0.72); border: 1px solid var(--border);
+      padding: 12px 14px; border-radius: 12px; font-size: 0.88rem; line-height: 1.5;
+    }
+    .bubble.panda { border-left: 3px solid var(--accent-bright); }
+    .bubble.trap-card {
+      border-left: 3px solid var(--amber);
+      background: rgba(245, 158, 11, 0.08);
+      border-color: rgba(245, 158, 11, 0.32);
+    }
+    .bubble-header {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 0.76rem; font-weight: 700; color: var(--accent-bright);
+      margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .bubble.trap-card .bubble-header { color: #fcd34d; }
+
+    /* Section Headings */
+    .section-head { text-align: center; margin-bottom: 26px; }
+    .section-head h2 {
+      font-size: clamp(1.65rem, 2.8vw, 2.25rem); font-weight: 800; letter-spacing: -0.025em;
+      margin-bottom: 8px;
+    }
+    .section-head p { color: var(--muted); max-width: 680px; margin: 0 auto; font-size: 0.98rem; }
+
+    /* All 10 Exam Tracks Matrix */
+    .tracks-section { margin: 18px 0 52px; }
+    .tracks-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px;
+    }
+    @media (max-width: 1080px) { .tracks-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .tracks-grid { grid-template-columns: 1fr; } }
+    .track-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 16px; cursor: pointer;
+      transition: all 0.16s; display: flex; flex-direction: column; justify-content: space-between;
+      text-decoration: none; color: var(--text);
+    }
+    .track-card:hover, .track-card.active {
+      border-color: var(--accent-bright);
+      background: var(--card-alt);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+    }
+    .track-card-top {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;
+    }
+    .track-route {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+      color: var(--accent-bright); background: rgba(16, 185, 129, 0.12);
+      padding: 2px 7px; border-radius: 6px; border: 1px solid rgba(52, 211, 153, 0.3);
+    }
+    .track-cat { font-size: 0.7rem; color: var(--muted); font-weight: 600; }
+    .track-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; }
+    .track-sections {
+      font-size: 0.77rem; color: var(--muted); margin-bottom: 12px; line-height: 1.4;
+    }
+    .track-card-foot {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.76rem; padding-top: 9px; border-top: 1px solid var(--border-soft);
+      color: #cbd5e1; font-weight: 600;
+    }
+
+    /* Freemium Pricing Section */
+    .pricing-section { margin: 16px 0 56px; }
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    @media (max-width: 920px) { .pricing-grid { grid-template-columns: 1fr; } }
+    .price-card {
+      background: linear-gradient(180deg, var(--card-alt) 0%, var(--card) 100%);
+      border: 1px solid var(--border);
+      border-radius: 18px; padding: 26px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      position: relative;
+    }
+    .price-card.featured {
+      border-color: var(--accent-bright);
+      box-shadow: 0 0 0 1px var(--accent-bright), 0 16px 40px rgba(16, 185, 129, 0.18);
+    }
+    .popular-ribbon {
+      position: absolute; top: -12px; right: 20px;
+      background: linear-gradient(135deg, #34d399, #10b981);
+      color: #042117; font-size: 0.72rem; font-weight: 800;
+      padding: 4px 11px; border-radius: 999px; letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .price-tier-name { font-size: 1.15rem; font-weight: 800; margin: 10px 0 4px; }
+    .price-sub { font-size: 0.83rem; color: var(--muted); margin-bottom: 12px; }
+    .price-amount { font-size: 2.3rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 4px; }
+    .price-amount span { font-size: 0.92rem; font-weight: 500; color: var(--muted); }
+    .price-pass-pill {
+      display: inline-block; background: rgba(99, 102, 241, 0.16);
+      border: 1px solid rgba(99, 102, 241, 0.4); color: #c7d2fe;
+      font-size: 0.79rem; font-weight: 700; padding: 4px 10px; border-radius: 8px;
+      margin-bottom: 16px;
+    }
+    .price-list { list-style: none; margin: 10px 0 22px; color: #dbeafe; font-size: 0.89rem; }
+    .price-list li {
+      margin-bottom: 10px; display: flex; align-items: flex-start; gap: 9px; line-height: 1.45;
+    }
+    .price-list li .check { color: var(--accent-bright); font-weight: 800; flex-shrink: 0; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border); padding: 32px 0 44px;
+      color: var(--muted); font-size: 0.82rem; background: rgba(7, 11, 22, 0.9);
+    }
+    .footer-grid {
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .footer-routes {
+      display: flex; flex-wrap: wrap; gap: 10px;
+    }
+    .footer-routes a {
+      color: var(--muted); text-decoration: none; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; padding: 4px 8px; border-radius: 6px; background: var(--card);
+      border: 1px solid var(--border-soft);
+    }
+    .footer-routes a:hover { color: var(--accent-bright); border-color: var(--accent-bright); }
+    .compliance-box {
+      background: rgba(17, 26, 48, 0.7); border: 1px solid var(--border);
+      padding: 14px 18px; border-radius: 12px; font-size: 0.8rem; color: var(--muted); line-height: 1.5;
+    }
+  </style>
+</head>
+<body id="top">
+  <div class="top-strip">
+    <div class="container top-strip-inner">
+      <span>🐼 <strong>CramPanda Free Forever Base Tier:</strong> 15 Blueprint-Calibrated Practice Questions/Day + 10 Socratic AI Tutor Turns/Day ($0 · No Card Required)</span>
+      <span class="mono">Single-Domain Multi-Exam Engine · crampanda.com</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav">
+      <a href="/" class="brand" onclick="selectExam('sat', true); return false;">
+        <div class="brand-logo-wrap">
+          <svg width="28" height="28" viewBox="0 0 64 64" fill="none" aria-label="CramPanda mascot">
+            <circle cx="15" cy="15" r="9.5" fill="#070b16" stroke="#34d399" stroke-width="3.2"/>
+            <circle cx="49" cy="15" r="9.5" fill="#070b16" stroke="#34d399" stroke-width="3.2"/>
+            <circle cx="32" cy="36" r="22" fill="#f8fafc" stroke="#34d399" stroke-width="3.2"/>
+            <ellipse cx="23" cy="34" rx="6" ry="7.2" fill="#070b16"/>
+            <ellipse cx="41" cy="34" rx="6" ry="7.2" fill="#070b16"/>
+            <circle cx="24.2" cy="32.5" r="2.3" fill="#34d399"/>
+            <circle cx="39.8" cy="32.5" r="2.3" fill="#34d399"/>
+            <ellipse cx="32" cy="42" rx="4.2" ry="2.8" fill="#070b16"/>
+            <path d="M26.5 47.2 Q32 51.5 37.5 47.2" stroke="#070b16" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <span>CramPanda</span>
+        <span class="brand-badge">SOCRATIC AI TUTOR</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#drill-workspace">Live AI Drill</a>
+        <a href="#exam-tracks">All 10 Exam Tracks</a>
+        <a href="#pricing">Free vs. Pro Pricing</a>
+      </nav>
+
+      <div class="allowance-bar">
+        <span class="pill" title="Resets daily at midnight"><span class="dot-live"></span> Free Qs Today: <strong id="q-counter">15 / 15</strong></span>
+        <span class="pill" title="Guided Socratic AI hints & trap breakdowns">🐼 AI Tutor Turns: <strong id="ai-counter">10 / 10</strong></span>
+        <a href="#pricing" class="btn btn-primary" style="padding: 8px 14px; font-size: 0.83rem;">Unlock Unlimited Pro</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-eyebrow" id="route-badge">
+        <span>⚡ INSTANT ZERO-LOGIN DRILL</span>
+        <span>·</span>
+        <span class="mono" id="hero-route-pill">crampanda.com/sat</span>
+      </div>
+      <h1>Study Smarter with Your <span class="grad">Free Socratic AI Panda Tutor</span></h1>
+      <p>Don't just memorize static answer keys. Pick any of our 10 exam tracks below, try a realistic blueprint-calibrated question right now, and let CramPanda guide you through the <strong>3-step logic</strong> and <strong>every trap answer</strong>.</p>
+
+      <div class="switcher-wrap" id="drill-workspace">
+        <span class="switcher-label">🎯 Select Exam Track:</span>
+        <div class="track-tabs" id="track-tabs"></div>
+      </div>
+    </section>
+
+    <!-- Live Interactive Socratic Drill -->
+    <section class="drill-grid">
+      <!-- Left: Question & Trap-Breakdown Interactive Card -->
+      <div class="panel">
+        <div>
+          <div class="panel-header">
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <span class="tag" id="exam-section-tag">SAT · Math</span>
+              <span class="tag tag-indigo" id="exam-skill-tag">Linear systems & word problems</span>
+            </div>
+            <div class="q-switcher" id="q-switcher"></div>
+          </div>
+
+          <div class="question-meta">
+            <span class="mono" id="exam-route-url">Route: crampanda.com/sat · Item #sat-math-001</span>
+            <span style="color: var(--accent-bright); font-weight: 600;">✓ 100% Original Blueprint-Calibrated</span>
+          </div>
+
+          <div class="question-stem" id="question-stem"></div>
+          <div class="choices" id="choices-list"></div>
+        </div>
+
+        <div class="drill-actions">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn-primary" id="hint-btn">🐼 Ask Panda for Next Socratic Hint</button>
+            <button class="btn btn-amber" id="trap-btn">🔍 Reveal All Trap-Answer Breakdowns</button>
+          </div>
+          <button class="btn btn-outline" id="next-q-btn" style="padding: 9px 14px; font-size: 0.83rem;">Next Question / Track →</button>
+        </div>
+      </div>
+
+      <!-- Right: Socratic 3-Step AI Tutor Panel -->
+      <div class="panel">
+        <div>
+          <div class="panel-header">
+            <div style="display:flex; align-items:center; gap:9px;">
+              <span style="font-size:1.25rem;">🐼</span>
+              <div>
+                <strong style="display:block; font-size:0.98rem;">CramPanda Socratic AI Tutor</strong>
+                <span style="font-size:0.75rem; color:var(--muted);">Guided 3-Step Reasoning · Never spoils the answer on Step 1</span>
+              </div>
+            </div>
+            <span class="brand-badge" id="tutor-step-badge">3-Step Socratic Mode</span>
+          </div>
+
+          <div class="socratic-steps">
+            <button class="step-btn" id="step-btn-0" onclick="triggerHintStep(0)">
+              <strong>Step 1: Spot Core</strong>
+              <span>Frame the setup</span>
+            </button>
+            <button class="step-btn" id="step-btn-1" onclick="triggerHintStep(1)">
+              <strong>Step 2: Find Gap</strong>
+              <span>Expose the bridge</span>
+            </button>
+            <button class="step-btn" id="step-btn-2" onclick="triggerHintStep(2)">
+              <strong>Step 3: Eliminate</strong>
+              <span>Lock the answer</span>
+            </button>
+          </div>
+
+          <div class="tutor-messages" id="tutor-messages"></div>
+        </div>
+
+        <div style="border-top: 1px solid var(--border-soft); padding-top: 13px; display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;">
+          <div>
+            <span style="font-size: 0.78rem; color: var(--muted); display:block;">Free Daily Allowance: <strong>15 Qs + 10 AI Turns ($0)</strong></span>
+            <span style="font-size: 0.82rem; color: var(--accent-bright); font-weight:700;" id="exam-price-note">HS Pro Unlimited: $29/mo or $99 4-Mo Pass</span>
+          </div>
+          <a href="#pricing" class="btn btn-outline" style="padding: 8px 13px; font-size: 0.82rem;">Compare Free vs. Pro</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- All 10 Exam Tracks Directory -->
+    <section class="tracks-section" id="exam-tracks">
+      <div class="section-head">
+        <span class="tag tag-green" style="margin-bottom:8px; display:inline-block;">SINGLE-DOMAIN MULTI-EXAM ARCHITECTURE</span>
+        <h2>10 Dedicated Exam Tracks Under One Roof</h2>
+        <p>Click any exam track below to switch the live Socratic AI workspace and preview its dedicated route (<span class="mono">/sat</span>, <span class="mono">/lsat</span>, <span class="mono">/mcat</span>, and more).</p>
+      </div>
+      <div class="tracks-grid" id="tracks-grid"></div>
+    </section>
+
+    <!-- Freemium Pricing & Upgrade Section -->
+    <section class="pricing-section" id="pricing">
+      <div class="section-head">
+        <span class="tag" style="margin-bottom:8px; display:inline-block;">FREEMIUM-TO-PRO FUNNEL</span>
+        <h2>Start Free Every Day. Upgrade Only for Unlimited Volume.</h2>
+        <p>Every student gets 15 blueprint-calibrated practice questions and 10 Socratic AI tutor turns every single day for $0—forever.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Tier 1: Free Base Tier -->
+        <div class="price-card">
+          <div>
+            <span class="tag tag-green">$0 Forever Base Tier</span>
+            <div class="price-tier-name">Free Daily Study Plan</div>
+            <div class="price-sub">For daily habit building & Socratic concept mastery</div>
+            <div class="price-amount">$0 <span>/ forever</span></div>
+            <div class="price-pass-pill">No credit card required · All 10 exam tracks</div>
+            <ul class="price-list">
+              <li><span class="check">✓</span> <span><strong>1 Full Diagnostic Exam</strong> per track with baseline score breakdown</span></li>
+              <li><span class="check">✓</span> <span><strong>15 Practice Questions / Day</strong> across any exam track</span></li>
+              <li><span class="check">✓</span> <span><strong>10 Socratic AI Tutor Turns / Day</strong> (3-step hints & logic nudges)</span></li>
+              <li><span class="check">✓</span> <span>Switch seamlessly between SAT, ACT, AP, LSAT, MCAT, GRE, GMAT, NCLEX, Bar & ASVAB</span></li>
+            </ul>
+          </div>
+          <a href="#drill-workspace" class="btn btn-outline" style="width:100%;">Start Free Daily Drill Above ↑</a>
+        </div>
+
+        <!-- Tier 2: High School Pro -->
+        <div class="price-card">
+          <div>
+            <span class="tag tag-indigo">High School → College & Career</span>
+            <div class="price-tier-name">High School & ASVAB Pro</div>
+            <div class="price-sub">Covers <strong>SAT</strong> (<code>/sat</code>), <strong>ACT</strong> (<code>/act</code>), <strong>AP Exams</strong> (<code>/ap</code>) & <strong>ASVAB</strong> (<code>/asvab</code>)</div>
+            <div class="price-amount">$29 <span>/ month</span></div>
+            <div class="price-pass-pill">Or <strong>$99 4-Month Exam Pass</strong> (Save 15%)</div>
+            <ul class="price-list">
+              <li><span class="check">✓</span> <span><strong>Unlimited</strong> SAT, ACT, AP & ASVAB Socratic AI tutoring turns</span></li>
+              <li><span class="check">✓</span> <span><strong>Unlimited</strong> custom practice drills & trap-answer eliminations</span></li>
+              <li><span class="check">✓</span> <span><strong>8 Full Timed Adaptive Mocks</strong> calibrated to digital blueprints</span></li>
+              <li><span class="check">✓</span> <span><strong>Weak-Skill Pacing Analytics</strong> & AP Free-Response (FRQ) AI rubric grader</span></li>
+            </ul>
+          </div>
+          <button class="btn btn-primary" style="width:100%;" onclick="openCheckoutModal('High School Pro ($29/mo or $99 4-Month Exam Pass)')">Unlock High School Pro →</button>
+        </div>
+
+        <!-- Tier 3: Grad & Licensing Pro -->
+        <div class="price-card featured">
+          <div class="popular-ribbon">Most Popular · Grad & Licensing</div>
+          <div>
+            <span class="tag">Grad, Medical, Law & Licensing</span>
+            <div class="price-tier-name">Grad & Licensing Pro</div>
+            <div class="price-sub">Covers <strong>LSAT</strong> (<code>/lsat</code>), <strong>MCAT</strong> (<code>/mcat</code>), <strong>GRE</strong> (<code>/gre</code>), <strong>GMAT</strong> (<code>/gmat</code>), <strong>NCLEX</strong> (<code>/nclex</code>) & <strong>Bar</strong> (<code>/bar</code>)</div>
+            <div class="price-amount">$49 <span>/ month</span></div>
+            <div class="price-pass-pill">Or <strong>$149 4-Month Exam Pass</strong> (Save 24%)</div>
+            <ul class="price-list">
+              <li><span class="check">✓</span> <span><strong>Unlimited</strong> LSAT, MCAT, GRE, GMAT, NCLEX & Bar Socratic AI tutoring</span></li>
+              <li><span class="check">✓</span> <span><strong>Deep Trap-Answer Breakdowns</strong> for every single distractor choice</span></li>
+              <li><span class="check">✓</span> <span><strong>Full Timed Adaptive Mocks</strong> + NGN clinical case studies & MBE drills</span></li>
+              <li><span class="check">✓</span> <span><strong>AI Score Predictor</strong> + Argumentative Writing / Essay feedback</span></li>
+            </ul>
+          </div>
+          <button class="btn btn-primary" style="width:100%;" onclick="openCheckoutModal('Grad & Licensing Pro ($49/mo or $149 4-Month Exam Pass)')">Unlock Grad & Licensing Pro →</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong style="color: var(--text); font-size: 1rem;">🐼 CramPanda (crampanda.com)</strong>
+          <p style="margin-top: 4px; max-width: 460px;">Study Smarter with Your Free Socratic AI Panda Tutor. Single-domain multi-exam test preparation engineered for high school, graduate, medical, law, and licensing candidates.</p>
+        </div>
+        <div>
+          <div style="font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; color: var(--text);">Dedicated Exam Routes</div>
+          <div class="footer-routes" id="footer-routes"></div>
+        </div>
+      </div>
+      <div class="compliance-box">
+        <strong>100% Original Blueprint-Calibrated Compliance Notice:</strong> Every practice question, passage, Socratic hint, and trap-answer breakdown on CramPanda (<code>crampanda.com</code>) is 100% original and psychometrically calibrated to public exam blueprints ($0 copyrighted item exposure). CramPanda is an independent educational platform and is not affiliated with, endorsed by, or sponsored by the College Board (SAT/AP), ACT, Inc., Law School Admission Council (LSAC), Association of American Medical Colleges (AAMC), Educational Testing Service (ETS), Graduate Management Admission Council (GMAC), National Council of State Boards of Nursing (NCSBN), National Conference of Bar Examiners (NCBE), or the U.S. Department of Defense (ASVAB).
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const SEED_TRACKS = {"sat": [{"id": "sat-math-001", "section": "Math", "skill": "Linear systems & word problems", "stem": "A campus coffee cart sells small cold brews for $3.50 and large cold brews for $5.00. On Tuesday, the cart sold 84 cold brews in total and collected $348.00 in revenue. How many large cold brews were sold?", "choices": ["A) 32", "B) 36", "C) 48", "D) 52"], "answer": "B", "socraticHints": ["Step 1 (Spot the Goal & Setup): We want L (large cold brews at $5.00). Let s be small ($3.50). Together, s + L = 84 total drinks and 3.50s + 5.00L = $348.00.", "Step 2 (Find the Gap): Assume all 84 drinks were small: 84 \u00d7 $3.50 = $294.00. That leaves $348.00 - $294.00 = $54.00 of 'extra' revenue generated by large drinks.", "Step 3 (Eliminate Traps): Each large drink adds $1.50 over a small drink ($5.00 - $3.50). Divide $54.00 \u00f7 $1.50 = 36 large cold brews (Choice B). Watch out for Choice C (48), which is s!"], "trapBreakdown": {"A": "32 comes from miscalculating 84 \u00d7 3.50 as 300.", "C": "48 is the number of small cold brews (84 - 36), a classic variable-swap trap.", "D": "52 comes from subtracting 32 from 84."}, "whyCorrect": "36 large drinks ($180.00) + 48 small drinks ($168.00) = 84 drinks and $348.00 total."}, {"id": "sat-rw-002", "section": "Reading & Writing", "skill": "Craft & Structure \u2014 Logical Transitions", "stem": "Bioluminescent fungi in tropical rainforests emit a faint green glow that peaks during humid nights. Earlier botanists hypothesized that the light was merely a metabolic byproduct of lignin decay; _______ recent field experiments using sticky LED-lit traps demonstrated that nocturnal beetles are four times more likely to land on glowing caps, dispersing fungal spores across the forest floor.", "choices": ["A) similarly,", "B) by contrast,", "C) consequently,", "D) for instance,"], "answer": "B", "whyCorrect": "The second clause directly refutes the earlier 'merely a byproduct' hypothesis with evidence of an adaptive ecological function (spore dispersal).", "socraticHints": ["Step 1 (Spot the Relationship): Clause 1 states an older hypothesis ('merely a byproduct'). Clause 2 presents new experimental evidence showing a clear survival purpose (attracting beetles to spread spores).", "Step 2 (Find the Gap): Does Clause 2 agree with, illustrate, or oppose the claim that the glow is 'merely a byproduct'?", "Step 3 (Eliminate Traps): Only 'by contrast,' (Choice B) signals the pivot from an outdated assumption to contradicting empirical proof."], "trapBreakdown": {"A": "Agreement trap: 'similarly,' implies the new study supports the 'merely a byproduct' claim, when it actually disproves it.", "C": "Causal trap: 'consequently,' suggests the older botanists' hypothesis caused beetles to land on traps.", "D": "Example trap: 'for instance,' introduces an example of a metabolic byproduct rather than contrasting evidence."}}, {"id": "sat-math-003", "section": "Math", "skill": "Nonlinear Functions & Vertex Form", "stem": "The height h(t), in meters, of a sensor buoy launched vertically from a research vessel is modeled by h(t) = -4.9(t - 2.5)^2 + 34.6, where t is seconds after launch. Which statement best interprets the number 34.6 in this context?", "choices": ["A) The buoy reaches its maximum height of 34.6 meters at t = 2.5 seconds.", "B) The buoy is launched from an initial deck height of 34.6 meters at t = 0.", "C) The buoy splashes into the water 34.6 seconds after launch.", "D) The buoy ascends at a constant vertical speed of 34.6 meters per second."], "answer": "A", "whyCorrect": "In vertex form a(t - h)^2 + k with a < 0, the vertex (2.5, 34.6) gives the maximum value k = 34.6 at t = 2.5.", "socraticHints": ["Step 1 (Spot the Form): Recognize vertex form f(t) = a(t - h)^2 + k, where (h, k) is the parabola's vertex.", "Step 2 (Find the Gap): Since (t - 2.5)^2 is never negative and is multiplied by -4.9, what happens to h(t) when t = 2.5?", "Step 3 (Eliminate Traps): At t = 2.5, the squared term zeroes out, leaving the peak height 34.6 m (Choice A). Choice B confuses the vertex constant k with the y-intercept h(0)."], "trapBreakdown": {"B": "Y-intercept trap: confuses vertex form's k with standard form's constant c. At t = 0, h(0) = -4.9(6.25) + 34.6 = 3.975 m.", "C": "Axis-swap trap: treats the output height (34.6 meters) as an input time in seconds.", "D": "Linear-rate trap: confuses a quadratic peak height with a linear slope."}}], "lsat": [{"id": "lsat-lr-001", "section": "Logical Reasoning", "skill": "Flaw in the Reasoning (Causal vs. Correlational)", "stem": "Editorial: Cities that installed protected bike lanes on major commuter corridors over the past five years experienced an average 18% increase in retail sales at street-level shops along those corridors. Clearly, replacing car parking with protected bike lanes causes nearby retail businesses to generate more revenue.\n\nThe reasoning in the editorial is most vulnerable to criticism on the grounds that it:", "choices": ["A) fails to consider that cities may have selected corridors that were already undergoing commercial revitalization as the sites for protected bike lanes", "B) relies on an ambiguous definition of what counts as a 'major commuter corridor'", "C) generalizes from retail shops to all businesses in the city", "D) ignores the possibility that some individual shops saw sales increase by more than 18%"], "answer": "A", "socraticHints": ["Step 1 (Spot the Conclusion): Premise: corridors with new protected bike lanes saw +18% retail sales. Conclusion: replacing parking with bike lanes CAUSES higher retail revenue.", "Step 2 (Find the Gap): Whenever an argument leaps from correlation (X and Y happened together) to causation (X caused Y), check for reverse causation or a third confounding factor.", "Step 3 (Eliminate Traps): Choice A introduces the classic confounding variable\u2014cities picked corridors that were ALREADY revitalizing\u2014breaking the causal link."], "trapBreakdown": {"B": "Term-definition critique; the argument's flaw is causal, not semantic.", "C": "Overgeneralization trap; the conclusion explicitly stays scoped to 'nearby retail businesses'.", "D": "Distribution detail that actually aligns with an 18% average rather than weakening the causal claim."}, "whyCorrect": "Choice A exposes a selection-bias / third-factor confounder (pre-existing commercial revitalization) that explains both the bike lane placement and the retail sales increase."}, {"id": "lsat-lr-002", "section": "Logical Reasoning", "skill": "Necessary Assumption (Defender / Bridge)", "stem": "Hospital Administrator: Our emergency department reduced average triage wait times by 22 minutes after adopting an AI intake scribe last quarter. Therefore, adopting the AI intake scribe improved overall patient satisfaction in our emergency department.\n\nThe administrator's argument depends on assuming which one of the following?", "choices": ["A) Shorter triage wait times are not completely offset by perceived impersonality during AI-assisted intake.", "B) No other hospital in the region reduced triage wait times by more than 22 minutes last quarter.", "C) Every patient treated in the emergency department last quarter noticed the 22-minute reduction.", "D) AI intake scribes eliminate all clerical charting errors in emergency departments."], "answer": "A", "whyCorrect": "If shorter wait times were outweighed by negative reactions to the AI scribe itself, overall patient satisfaction would not improve\u2014so the argument requires Choice A.", "socraticHints": ["Step 1 (Spot the Conclusion): Premise = AI scribe cut wait times by 22 min. Conclusion = AI scribe improved overall patient satisfaction.", "Step 2 (Find the Gap): Apply the Negation Test: what if cutting wait times did NOT improve overall satisfaction because patients disliked another aspect of the AI scribe?", "Step 3 (Eliminate Traps): Choice C and D use extreme language ('Every patient', 'all errors') not required for an overall average improvement. Choice A defends the link between faster wait times and net satisfaction."], "trapBreakdown": {"B": "Irrelevant comparison trap: peer hospitals' wait times have no bearing on whether satisfaction improved inside this hospital.", "C": "Extreme quantifier trap: 'Every patient' is far stronger than needed to raise average satisfaction.", "D": "Sufficient/extreme trap: total elimination of charting errors is unrelated to the wait-time premise."}}, {"id": "lsat-rc-003", "section": "Reading Comprehension", "skill": "Inference & Authorial Reasoning", "stem": "Legal Historian: Nineteenth-century maritime salvage courts rarely awarded fixed percentages of cargo value. Instead, judges calibrated awards to the specific hazard faced by the salvors and the replacement cost of specialized rescue vessels\u2014an approach designed to deter reckless opportunism while ensuring commercial fleets kept salvage tugs on standby.\n\nWhich one of the following is most strongly supported by the historian's statements?", "choices": ["A) Fixed-percentage salvage awards could either overcompensate low-risk rescues or underfund dedicated salvage vessels.", "B) Nineteenth-century cargo owners preferred litigating salvage claims over negotiating private towage contracts.", "C) Salvage courts valued vessel replacement cost more heavily than the degree of physical danger to crew members.", "D) Commercial fleets stopped maintaining standby salvage tugs once steamships replaced sailing vessels."], "answer": "A", "whyCorrect": "Because courts rejected fixed percentages specifically to balance deterring reckless opportunism (overcompensation) and funding standby rescue vessels (undercompensation), Choice A directly follows.", "socraticHints": ["Step 1 (Spot the Facts): Courts avoided fixed percentages and instead weighed (1) hazard faced and (2) vessel replacement cost to achieve two policy goals.", "Step 2 (Find the Gap): Why would fixed percentages fail those two policy goals (deterring opportunism + keeping specialized tugs funded)?", "Step 3 (Eliminate Traps): Choice C invents a ranking between the two factors; Choice B and D introduce outside topics (private contracts, steamships). Choice A stays strictly within the text's logic."], "trapBreakdown": {"B": "Unsupported comparison: private towage contracts are never mentioned in the passage.", "C": "Invented hierarchy trap: the passage lists both hazard and vessel cost without ranking one above the other.", "D": "Out-of-scope temporal trap: steamships vs. sailing vessels is never mentioned."}}], "act": [{"id": "act-sci-001", "section": "Science", "skill": "Data Representation & Inverse Relationships", "stem": "In an experiment measuring dissolved oxygen (DO) in freshwater streams at 1 atm pressure, a researcher records DO of 11.3 mg/L at 10\u00b0C, 9.1 mg/L at 20\u00b0C, and 7.6 mg/L at 30\u00b0C. Based on this trend, if a fourth sample is equilibrated at 25\u00b0C, its DO concentration will most likely be:", "choices": ["A) less than 7.6 mg/L", "B) between 7.6 mg/L and 9.1 mg/L", "C) between 9.1 mg/L and 11.3 mg/L", "D) greater than 11.3 mg/L"], "answer": "B", "socraticHints": ["Step 1 (Spot the Trend): Look at the measured temperatures: 10\u00b0C \u2192 11.3 mg/L, 20\u00b0C \u2192 9.1 mg/L, 30\u00b0C \u2192 7.6 mg/L. As temperature rises, dissolved oxygen (DO) steadily drops.", "Step 2 (Find the Bracket): Where does 25\u00b0C sit? Exactly between 20\u00b0C and 30\u00b0C.", "Step 3 (Eliminate Traps): Because DO decreases monotonically with temperature, the DO at 25\u00b0C must sit between the 30\u00b0C value (7.6 mg/L) and the 20\u00b0C value (9.1 mg/L) \u2192 Choice B."], "whyCorrect": "25\u00b0C lies between 20\u00b0C (9.1 mg/L) and 30\u00b0C (7.6 mg/L), so by interpolation DO is between 7.6 and 9.1 mg/L.", "trapBreakdown": {"A": "Extrapolation trap: < 7.6 mg/L would occur above 30\u00b0C, not at 25\u00b0C.", "C": "Interval shift trap: 9.1 to 11.3 mg/L corresponds to temperatures between 10\u00b0C and 20\u00b0C.", "D": "Inverse-trend trap: assumes DO increases with temperature."}}], "ap": [{"id": "ap-calc-001", "section": "AP Calculus AB", "skill": "Chain Rule & Tangent Line Slope", "stem": "If f(x) = (3x^2 - 5)^4, what is the slope of the line tangent to the graph of f at x = 1?", "choices": ["A) -192", "B) -32", "C) 32", "D) 192"], "answer": "A", "socraticHints": ["Step 1 (Spot the Rule): The slope of the tangent line at x = 1 is the derivative f'(1). Use the Chain Rule: d/dx [u(x)^4] = 4\u00b7u(x)^3 \u00b7 u'(x).", "Step 2 (Find Inner & Outer Parts): Here u(x) = 3x^2 - 5, so u'(x) = 6x. That gives f'(x) = 4(3x^2 - 5)^3 \u00b7 (6x).", "Step 3 (Eliminate Traps): Plug in x = 1: u(1) = 3(1)^2 - 5 = -2, and u'(1) = 6. Multiply 4 \u00b7 (-2)^3 \u00b7 6 = 4 \u00b7 (-8) \u00b7 6 = -192 (Choice A)."], "whyCorrect": "By the Chain Rule, f'(1) = 4(3(1)^2 - 5)^3 \u00b7 6(1) = 4(-8)(6) = -192.", "trapBreakdown": {"B": "Forgot-chain-rule trap: computes 4(3(1)^2 - 5)^3 = 4(-8) = -32 without multiplying by the inside derivative u'(1) = 6.", "C": "Double error trap: drops both the inside derivative 6x and the negative sign on (-2)^3.", "D": "Sign trap: treats (-2)^3 as +8 instead of -8, yielding +192."}}], "mcat": [{"id": "mcat-biochem-001", "section": "Biological & Biochemical Foundations", "skill": "Michaelis-Menten Enzyme Kinetics", "stem": "Adding a small-molecule modulator to an enzyme assay leaves Vmax unchanged while increasing the apparent Km threefold. How is this modulator acting?", "choices": ["A) Competitive inhibition", "B) Noncompetitive inhibition", "C) Uncompetitive inhibition", "D) Allosteric activation"], "answer": "A", "socraticHints": ["Step 1 (Spot the Kinetic Signature): Vmax is unchanged, while apparent Km increases 3x (meaning lower apparent substrate affinity).", "Step 2 (Find the Mechanism): If adding enough substrate still reaches the normal Vmax, the inhibitor must be reversible by substrate competition at the active site.", "Step 3 (Eliminate Traps): Competitive inhibitors bind the active site (\u2191 Km, unchanged Vmax) \u2192 Choice A."], "whyCorrect": "Competitive inhibitors compete directly with substrate for the active site, increasing apparent Km while leaving Vmax unchanged at saturating substrate concentrations.", "trapBreakdown": {"B": "Noncompetitive inhibition lowers Vmax while leaving Km unchanged\u2014the exact opposite kinetic signature.", "C": "Uncompetitive inhibition binds only the ES complex, decreasing BOTH Vmax and apparent Km.", "D": "Allosteric activation would increase catalytic efficiency (lowering Km or raising Vmax), not raise Km threefold."}}], "gre": [{"id": "gre-quant-001", "section": "Quantitative Reasoning", "skill": "Weighted Averages", "stem": "Group X has 12 students with a mean score of 75, and Group Y has 18 students with a mean score of 85. What is the combined mean score of all 30 students?", "choices": ["A) 79", "B) 80", "C) 81", "D) 82"], "answer": "C", "socraticHints": ["Step 1 (Spot the Weighting): Group X has 12 students (mean 75) and Group Y has 18 students (mean 85). Because Group Y is larger, the combined mean must be pulled above 80.", "Step 2 (Find the Total Points): Total score = (12 \u00d7 75) + (18 \u00d7 85) = 900 + 1,530 = 2,430 points across 30 students.", "Step 3 (Eliminate Traps): Divide 2,430 \u00f7 30 = 81 (Choice C). Choice B (80) is the unweighted average trap!"], "whyCorrect": "(12 \u00d7 75 + 18 \u00d7 85) / 30 = (900 + 1530) / 30 = 2430 / 30 = 81.", "trapBreakdown": {"A": "Reverse-weighting trap: weights the smaller group (75) more heavily than the larger group (85).", "B": "Unweighted mean trap: averages 75 and 85 directly as (75 + 85)/2 = 80, ignoring the 12 vs. 18 group sizes.", "D": "Arithmetic slip: over-weights Group Y as 70% instead of 18/30 (60%)."}}], "gmat": [{"id": "gmat-di-001", "section": "Data Insights", "skill": "Percent Change Traps", "stem": "A software subscription price is increased by 25% in Q1 and then discounted by 20% in Q2. Compared with the original price before Q1, the Q2 price is:", "choices": ["A) 5% higher", "B) 1% higher", "C) exactly the same", "D) 5% lower"], "answer": "C", "socraticHints": ["Step 1 (Spot the Base Shift): Percentage changes apply sequentially to different bases\u2014never add +25% and -20% directly!", "Step 2 (Test with $100): Start at $100. A 25% increase in Q1 brings the price to $100 \u00d7 1.25 = $125.", "Step 3 (Eliminate Traps): A 20% discount on $125 removes 0.20 \u00d7 $125 = $25, returning the price to $100\u2014exactly the same (Choice C)."], "whyCorrect": "1.25 \u00d7 0.80 = 1.00, so a 25% increase followed by a 20% decrease returns to 100% of the original price.", "trapBreakdown": {"A": "Additive-percent trap: naively computes +25% - 20% = +5% without accounting for the larger Q1 base.", "B": "Rounding/compounding guess: confuses 1.25 \u00d7 0.80 with 1.01.", "D": "Reverse-base trap: applies 25% off followed by 20% up (0.75 \u00d7 1.20 = 0.90) or miscalculates the discount."}}], "nclex": [{"id": "nclex-pharm-001", "section": "Pharmacology & Prioritization", "skill": "Potassium-Wasting Diuretics & Digoxin Toxicity", "stem": "A nurse reviews morning labs for a client taking digoxin and furosemide daily. Which laboratory finding requires the nurse to hold the morning digoxin dose and notify the prescriber first?", "choices": ["A) Serum sodium 136 mEq/L", "B) Serum potassium 2.9 mEq/L", "C) BUN 18 mg/dL", "D) Fasting glucose 114 mg/dL"], "answer": "B", "socraticHints": ["Step 1 (Spot the High-Alert Interaction): Furosemide is a loop diuretic that wastes potassium; digoxin is a cardiac glycoside with a narrow therapeutic index.", "Step 2 (Find the Abnormal Lab): Normal serum potassium is 3.5\u20135.0 mEq/L. A level of 2.9 mEq/L is clinically significant hypokalemia.", "Step 3 (Eliminate Traps): Hypokalemia sensitizes myocardial Na+/K+-ATPase to digoxin, precipitating fatal dysrhythmias\u2014hold digoxin and notify the prescriber for K+ 2.9 mEq/L (Choice B)."], "whyCorrect": "Hypokalemia (K+ 2.9 mEq/L < 3.5 mEq/L) caused by furosemide markedly increases the risk of life-threatening digoxin toxicity and cardiac arrhythmias.", "trapBreakdown": {"A": "Normal lab distraction: serum sodium of 136 mEq/L is within the normal reference range (135\u2013145 mEq/L).", "C": "Normal renal marker: BUN of 18 mg/dL is within normal limits (10\u201320 mg/dL).", "D": "Mild glycemic distraction: fasting glucose of 114 mg/dL does not contraindicate digoxin administration."}}], "bar": [{"id": "bar-torts-001", "section": "MBE Torts", "skill": "Negligence Per Se \u2014 Class of Persons / Class of Risk", "stem": "A state statute requires pharmacies to dispense prescription liquids in child-resistant caps to prevent accidental poisoning of young children. A pharmacist dispenses cough syrup in a standard twist cap. When the adult buyer drops the bottle on a tile floor, the cap pops off and the buyer slips on the spilled syrup, fracturing a wrist. In the buyer's suit relying on the statute to establish negligence per se, will the statutory violation establish breach of duty?", "choices": ["A) Yes, because the pharmacist violated a safety statute and the violation caused the spill", "B) No, because neither the adult buyer nor a slip-and-fall injury is within the class of persons or class of harm the statute was designed to prevent", "C) Yes, because compliance with the statute was feasible and inexpensive", "D) No, because violations of licensing statutes are never admissible in civil tort actions"], "answer": "B", "socraticHints": ["Step 1 (Spot the Doctrine): Negligence per se substitutes a safety statute for the standard of care ONLY if two requirements are met.", "Step 2 (Find the Two-Part Test): (1) The plaintiff must be in the 'class of persons' the statute protects, and (2) the injury must be in the 'class of risk/harm' the statute was designed to prevent.", "Step 3 (Eliminate Traps): A child-resistant cap statute protects young children from poisoning, NOT adult buyers from slip-and-fall wrist fractures \u2192 Choice B."], "whyCorrect": "Negligence per se fails because an adult slipping on spilled liquid is outside both the protected class (young children) and the statutory risk (accidental poisoning).", "trapBreakdown": {"A": "But-for causation trap: factual causation alone does not trigger negligence per se when the harm is outside the statute's protective scope.", "C": "Hand-formula confusion: low compliance cost is relevant to ordinary reasonable-care analysis, not statutory negligence per se.", "D": "Overbroad rule statement: statutory violations ARE admissible as negligence per se when class-of-person and class-of-risk requirements are met."}}], "asvab": [{"id": "asvab-ar-001", "section": "Arithmetic Reasoning", "skill": "Rate \u00d7 Time Distance", "stem": "Two convoy trucks leave the same depot at 0800 traveling in opposite directions along a straight highway, one averaging 45 mph and the other averaging 55 mph. At what time will they be 350 miles apart?", "choices": ["A) 1100", "B) 1130", "C) 1200", "D) 1230"], "answer": "B", "socraticHints": ["Step 1 (Spot the Direction): Both trucks leave the same depot traveling in OPPOSITE directions at 45 mph and 55 mph.", "Step 2 (Find the Combined Separation Rate): Every hour, the distance between them grows by 45 + 55 = 100 miles.", "Step 3 (Eliminate Traps): Time = Distance \u00f7 Rate = 350 miles \u00f7 100 mph = 3.5 hours (3 hours 30 minutes). Starting from 0800, 0800 + 0330 = 1130 (Choice B)."], "whyCorrect": "At a combined separation speed of 45 + 55 = 100 mph, 350 miles takes 3.5 hours; 3 hours 30 minutes after 0800 is 1130.", "trapBreakdown": {"A": "Half-hour drop trap: 1100 is only 3.0 hours (300 miles apart), dropping the 0.5-hour remainder.", "C": "Single-speed division trap: miscalculates 350 \u00f7 87.5 = 4 hours (1200).", "D": "Single-truck rate trap: divides 350 by ~77 mph instead of summing opposite velocities."}}]};
+    const EXAMS_META = [{"slug": "sat", "name": "SAT", "category": "High School \u2192 College", "sections": ["reading-writing", "math"], "proMonthlyUsd": 29, "pass4MoUsd": 99}, {"slug": "act", "name": "ACT", "category": "High School \u2192 College", "sections": ["english", "math", "reading", "science"], "proMonthlyUsd": 29, "pass4MoUsd": 99}, {"slug": "ap", "name": "AP Exams", "category": "High School \u2192 College", "sections": ["calculus-ab", "biology", "us-history", "chemistry", "english-lang"], "proMonthlyUsd": 29, "pass4MoUsd": 99}, {"slug": "lsat", "name": "LSAT", "category": "Grad & Professional", "sections": ["logical-reasoning", "reading-comprehension", "argumentative-writing"], "proMonthlyUsd": 49, "pass4MoUsd": 149}, {"slug": "mcat", "name": "MCAT", "category": "Grad & Professional", "sections": ["cars", "chem-phys", "bio-biochem", "psych-soc"], "proMonthlyUsd": 49, "pass4MoUsd": 149}, {"slug": "gre", "name": "GRE", "category": "Grad & Professional", "sections": ["verbal", "quantitative", "analytical-writing"], "proMonthlyUsd": 49, "pass4MoUsd": 149}, {"slug": "gmat", "name": "GMAT Focus", "category": "Grad & Professional", "sections": ["quantitative", "verbal", "data-insights"], "proMonthlyUsd": 49, "pass4MoUsd": 149}, {"slug": "nclex", "name": "NCLEX-RN", "category": "Licensing & Career", "sections": ["ngn-case-studies", "pharmacology", "management-of-care"], "proMonthlyUsd": 49, "pass4MoUsd": 149}, {"slug": "bar", "name": "MBE / UBE Bar", "category": "Licensing & Career", "sections": ["constitutional-law", "contracts", "torts", "criminal-law", "evidence", "real-property", "civil-procedure"], "proMonthlyUsd": 49, "pass4MoUsd": 149}, {"slug": "asvab", "name": "ASVAB", "category": "Licensing & Career", "sections": ["arithmetic-reasoning", "word-knowledge", "paragraph-comprehension", "mathematics-knowledge"], "proMonthlyUsd": 29, "pass4MoUsd": 99}];
+
+    let qLeft = 15;
+    let aiLeft = 10;
+    let currentSlug = "sat";
+    let currentQIdx = 0;
+    let hintStepIdx = 0;
+
+    const tabsEl = document.getElementById("track-tabs");
+    const tracksGridEl = document.getElementById("tracks-grid");
+    const footerRoutesEl = document.getElementById("footer-routes");
+    const stemEl = document.getElementById("question-stem");
+    const choicesEl = document.getElementById("choices-list");
+    const tutorEl = document.getElementById("tutor-messages");
+    const qSwitcherEl = document.getElementById("q-switcher");
+
+    function getCategoryClass(cat) {
+      if (cat.includes("High School")) return "hs";
+      if (cat.includes("Grad")) return "grad";
+      return "lic";
+    }
+
+    function renderNavigation() {
+      tabsEl.innerHTML = "";
+      tracksGridEl.innerHTML = "";
+      footerRoutesEl.innerHTML = "";
+
+      EXAMS_META.forEach(meta => {
+        const isAct = meta.slug === currentSlug;
+        const catClass = getCategoryClass(meta.category);
+
+        // Top Switcher Tab
+        const btn = document.createElement("a");
+        btn.href = "/" + meta.slug;
+        btn.className = `track-tab ${catClass}` + (isAct ? " active" : "");
+        btn.dataset.slug = meta.slug;
+        btn.innerHTML = `<span class="cat-dot"></span><span>${meta.name}</span>`;
+        btn.onclick = (e) => {
+          e.preventDefault();
+          selectExam(meta.slug, true);
+        };
+        tabsEl.appendChild(btn);
+
+        // 10-Track Directory Card
+        const card = document.createElement("a");
+        card.href = "/" + meta.slug;
+        card.className = "track-card" + (isAct ? " active" : "");
+        card.onclick = (e) => {
+          e.preventDefault();
+          selectExam(meta.slug, true);
+          document.getElementById("drill-workspace").scrollIntoView({ behavior: "smooth" });
+        };
+        const sectionsList = meta.sections.map(s => s.replace(/-/g, " ")).join(" · ");
+        card.innerHTML = `
+          <div>
+            <div class="track-card-top">
+              <span class="track-route">/${meta.slug}</span>
+              <span class="track-cat">${meta.category}</span>
+            </div>
+            <h3>${meta.name}</h3>
+            <div class="track-sections">${sectionsList}</div>
+          </div>
+          <div class="track-card-foot">
+            <span>Free: 15 Qs/day</span>
+            <span style="color:var(--accent-bright);">Pro $${meta.proMonthlyUsd}/mo →</span>
+          </div>
+        `;
+        tracksGridEl.appendChild(card);
+
+        // Footer route link
+        const fLink = document.createElement("a");
+        fLink.href = "/" + meta.slug;
+        fLink.textContent = `crampanda.com/${meta.slug}`;
+        fLink.onclick = (e) => {
+          e.preventDefault();
+          selectExam(meta.slug, true);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+        footerRoutesEl.appendChild(fLink);
+      });
+    }
+
+    function selectExam(slug, pushUrl = false) {
+      currentSlug = SEED_TRACKS[slug] ? slug : "sat";
+      currentQIdx = 0;
+      if (pushUrl && window.history && window.history.pushState) {
+        try {
+          window.history.pushState({ slug: currentSlug }, "", "/" + currentSlug);
+        } catch (e) {}
+      }
+      renderNavigation();
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      hintStepIdx = 0;
+      const meta = EXAMS_META.find(m => m.slug === currentSlug) || EXAMS_META[0];
+      const questions = SEED_TRACKS[currentSlug] || SEED_TRACKS["sat"];
+      const q = questions[currentQIdx] || questions[0];
+
+      document.getElementById("hero-route-pill").textContent = `crampanda.com/${meta.slug}`;
+      document.getElementById("exam-section-tag").textContent = `${meta.name} · ${q.section}`;
+      document.getElementById("exam-skill-tag").textContent = q.skill;
+      document.getElementById("exam-route-url").textContent = `Route: crampanda.com/${meta.slug} · Item #${q.id}`;
+      document.getElementById("exam-price-note").textContent =
+        `${meta.name} Pro Unlimited: $${meta.proMonthlyUsd}/mo or $${meta.pass4MoUsd} 4-Mo Exam Pass`;
+
+      // Question switcher pills if track has multiple questions
+      qSwitcherEl.innerHTML = "";
+      questions.forEach((item, idx) => {
+        const qb = document.createElement("button");
+        qb.className = "q-pill-btn" + (idx === currentQIdx ? " active" : "");
+        qb.textContent = `Q${idx + 1}`;
+        qb.onclick = () => {
+          currentQIdx = idx;
+          renderQuestion();
+        };
+        qSwitcherEl.appendChild(qb);
+      });
+
+      stemEl.textContent = q.stem;
+      choicesEl.innerHTML = "";
+
+      q.choices.forEach((choiceText, idx) => {
+        const letter = choiceText.trim().charAt(0);
+        const isCorrect = letter === q.answer;
+        const trapText = isCorrect
+          ? `✅ <strong>Why ${letter} is Correct:</strong> ${q.whyCorrect || (q.socraticHints && q.socraticHints[q.socraticHints.length - 1]) || "Matches blueprint logic."}`
+          : `🪤 <strong>Why ${letter} is a Trap:</strong> ${(q.trapBreakdown && q.trapBreakdown[letter]) ? q.trapBreakdown[letter] : "Classic blueprint distractor."}`;
+
+        const cBtn = document.createElement("button");
+        cBtn.className = "choice-btn";
+        cBtn.dataset.letter = letter;
+        cBtn.innerHTML = `
+          <div>${choiceText}</div>
+          <div class="choice-explain">${trapText}</div>
+        `;
+        cBtn.onclick = () => handleChoiceClick(letter, cBtn, q, meta);
+        choicesEl.appendChild(cBtn);
+      });
+
+      // Reset step buttons
+      [0, 1, 2].forEach(i => {
+        const sb = document.getElementById(`step-btn-${i}`);
+        if (sb) sb.classList.remove("unlocked");
+      });
+
+      tutorEl.innerHTML = `
+        <div class="bubble panda">
+          <div class="bubble-header"><span>🐼 CramPanda Socratic AI</span><span>Ready · Turn 0/10</span></div>
+          Studying <strong>${meta.name} (${q.section})</strong> on <code>crampanda.com/${meta.slug}</code>.<br/>
+          Click <strong>Step 1, Step 2, or Step 3</strong> above for guided Socratic hints, or pick an answer choice to see the instant <strong>Trap-Answer Breakdown</strong>!
+        </div>
+      `;
+    }
+
+    function handleChoiceClick(letter, btn, q, meta) {
+      if (qLeft > 0) qLeft--;
+      document.getElementById("q-counter").textContent = `${qLeft} / 15`;
+
+      Array.from(choicesEl.children).forEach(b => {
+        const bLetter = b.dataset.letter;
+        b.classList.remove("correct", "wrong");
+        b.classList.add("show-explain");
+        if (bLetter === q.answer) {
+          b.classList.add("correct");
+        } else if (b === btn) {
+          b.classList.add("wrong");
+        }
+      });
+
+      if (letter === q.answer) {
+        tutorEl.innerHTML += `
+          <div class="bubble panda">
+            <div class="bubble-header"><span>✅ Correct Answer (${letter})</span><span>Blueprint Verified</span></div>
+            <strong>Spot on!</strong> ${q.whyCorrect || q.socraticHints[q.socraticHints.length - 1]}
+          </div>
+        `;
+      } else {
+        const specificTrap = (q.trapBreakdown && q.trapBreakdown[letter])
+          ? q.trapBreakdown[letter]
+          : q.socraticHints[Math.min(1, q.socraticHints.length - 1)];
+        tutorEl.innerHTML += `
+          <div class="bubble trap-card">
+            <div class="bubble-header"><span>🪤 Trap-Answer Alert (Choice ${letter})</span><span>Why Students Miss This</span></div>
+            ${specificTrap}<br/><strong style="color:var(--accent-bright);">Correct Answer (${q.answer}):</strong> ${q.whyCorrect || q.socraticHints[q.socraticHints.length - 1]}
+          </div>
+        `;
+      }
+      tutorEl.scrollTop = tutorEl.scrollHeight;
+    }
+
+    function triggerHintStep(stepIdx) {
+      const questions = SEED_TRACKS[currentSlug] || SEED_TRACKS["sat"];
+      const q = questions[currentQIdx] || questions[0];
+      const hints = q.socraticHints || [];
+      const actualIdx = Math.min(stepIdx, hints.length - 1);
+
+      if (aiLeft > 0) aiLeft--;
+      document.getElementById("ai-counter").textContent = `${aiLeft} / 10`;
+
+      const sb = document.getElementById(`step-btn-${stepIdx}`);
+      if (sb) sb.classList.add("unlocked");
+
+      const stepLabels = [
+        "Step 1 · Spot the Conclusion & Setup",
+        "Step 2 · Find the Logical Gap",
+        "Step 3 · Eliminate Traps & Solve"
+      ];
+      tutorEl.innerHTML += `
+        <div class="bubble panda">
+          <div class="bubble-header"><span>🐼 ${stepLabels[stepIdx] || "Socratic Hint"}</span><span>Free AI Turn (${10 - aiLeft}/10 used)</span></div>
+          ${hints[actualIdx]}
+        </div>
+      `;
+      hintStepIdx = Math.min(stepIdx + 1, 2);
+      tutorEl.scrollTop = tutorEl.scrollHeight;
+    }
+
+    document.getElementById("hint-btn").onclick = () => {
+      triggerHintStep(hintStepIdx);
+    };
+
+    document.getElementById("trap-btn").onclick = () => {
+      const questions = SEED_TRACKS[currentSlug] || SEED_TRACKS["sat"];
+      const q = questions[currentQIdx] || questions[0];
+      Array.from(choicesEl.children).forEach(b => {
+        b.classList.add("show-explain");
+        if (b.dataset.letter === q.answer) {
+          b.classList.add("correct");
+        } else {
+          b.classList.add("wrong");
+        }
+      });
+      if (aiLeft > 0) aiLeft--;
+      document.getElementById("ai-counter").textContent = `${aiLeft} / 10`;
+
+      let trapLines = "";
+      if (q.trapBreakdown) {
+        Object.entries(q.trapBreakdown).forEach(([k, v]) => {
+          trapLines += `<div style="margin-top:4px;">• <strong>Choice ${k} Trap:</strong> ${v}</div>`;
+        });
+      }
+      tutorEl.innerHTML += `
+        <div class="bubble trap-card">
+          <div class="bubble-header"><span>🔍 Full Distractor & Trap Breakdown</span><span>Item #${q.id}</span></div>
+          <div><strong>✅ Correct (${q.answer}):</strong> ${q.whyCorrect || ""}</div>
+          ${trapLines}
+        </div>
+      `;
+      tutorEl.scrollTop = tutorEl.scrollHeight;
+    };
+
+    document.getElementById("next-q-btn").onclick = () => {
+      const questions = SEED_TRACKS[currentSlug] || SEED_TRACKS["sat"];
+      if (currentQIdx + 1 < questions.length) {
+        currentQIdx++;
+        renderQuestion();
+      } else {
+        const idx = EXAMS_META.findIndex(m => m.slug === currentSlug);
+        const nextMeta = EXAMS_META[(idx + 1) % EXAMS_META.length];
+        selectExam(nextMeta.slug, true);
+      }
+    };
+
+    function openCheckoutModal(planName) {
+      alert(`🐼 CramPanda (${planName}): Your 15 free questions/day + 10 Socratic AI turns/day are active right now with $0 login required. Live Stripe checkout for ${planName} activates on crampanda.com upon owner approval.`);
+    }
+
+    // Route detection on load (/sat, /lsat, /mcat, etc. or #lsat)
+    function initFromUrl() {
+      const pathSlug = window.location.pathname.replace(/^\/+/, "").split("/")[0].toLowerCase();
+      const hashSlug = window.location.hash.replace(/^#\/?/, "").toLowerCase();
+      const initialSlug = SEED_TRACKS[pathSlug] ? pathSlug : (SEED_TRACKS[hashSlug] ? hashSlug : "sat");
+      selectExam(initialSlug, false);
+    }
+
+    window.addEventListener("popstate", initFromUrl);
+    initFromUrl();
+  </script>
+</body>
+</html>
