@@ -1,0 +1,6 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/(sat|act|ap|lsat|mcat|gre|gmat|nclex|bar|asvab)(/.*)?", "destination": "/index.html" }
+  ]
+}
