@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://crampanda.com/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://crampanda.com/sat</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://crampanda.com/act</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://crampanda.com/ap</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://crampanda.com/lsat</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://crampanda.com/mcat</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://crampanda.com/gre</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://crampanda.com/gmat</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://crampanda.com/nclex</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://crampanda.com/bar</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://crampanda.com/asvab</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+</urlset>
