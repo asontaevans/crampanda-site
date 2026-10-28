@@ -729,7 +729,7 @@
       currentQIdx = 0;
       if (pushUrl && window.history && window.history.pushState) {
         try {
-          window.history.pushState({ slug: currentSlug }, "", "/" + currentSlug);
+          window.history.pushState({ slug: currentSlug }, "", (getBasePrefix() || "") + "/" + currentSlug);
         } catch (e) {}
       }
       renderNavigation();
@@ -912,10 +912,15 @@
     }
 
     // Route detection on load (/sat, /lsat, /mcat, etc. or #lsat)
+    function getBasePrefix() {
+      return window.location.pathname.startsWith("/crampanda-site") ? "/crampanda-site" : "";
+    }
+
     function initFromUrl() {
-      const pathSlug = window.location.pathname.replace(/^\/+/, "").split("/")[0].toLowerCase();
+      const segments = window.location.pathname.replace(/^\/+|\/+$/g, "").split("/").map(x => x.toLowerCase());
+      const matchedSeg = segments.find(seg => SEED_TRACKS[seg]);
       const hashSlug = window.location.hash.replace(/^#\/?/, "").toLowerCase();
-      const initialSlug = SEED_TRACKS[pathSlug] ? pathSlug : (SEED_TRACKS[hashSlug] ? hashSlug : "sat");
+      const initialSlug = matchedSeg ? matchedSeg : (SEED_TRACKS[hashSlug] ? hashSlug : "sat");
       selectExam(initialSlug, false);
     }
 
