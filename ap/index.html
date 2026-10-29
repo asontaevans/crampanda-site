@@ -7,62 +7,72 @@
   <meta name="description" content="CramPanda (crampanda.com): Study smarter with your free Socratic AI Panda Tutor across SAT, ACT, AP, LSAT, MCAT, GRE, GMAT, NCLEX, Bar, and ASVAB. 15 free questions/day + 10 Socratic AI tutor turns/day. 100% original blueprint-calibrated items." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #070b16;
-      --bg-elev: #0d1426;
-      --card: #111a30;
-      --card-alt: #16223f;
-      --card-hover: #1b2a4d;
-      --border: #24355e;
-      --border-soft: rgba(148, 163, 184, 0.14);
+      /* Cool Creative Panda Palette: Panda Tuxedo Obsidian + Frost Cream + Electric Bamboo + Cyber Berry */
+      --bg: #08090f;
+      --bg-elev: #10131f;
+      --card: #131826;
+      --card-alt: #182033;
+      --card-hover: #1e2942;
+      --panda-cream: #f8fafc;
+      --panda-frost: #eef4ff;
+      --border: #283655;
+      --border-soft: rgba(226, 232, 240, 0.14);
       --text: #f8fafc;
-      --muted: #9fb0d0;
-      --accent: #10b981;
-      --accent-bright: #34d399;
-      --accent-glow: rgba(16, 185, 129, 0.22);
-      --amber: #f59e0b;
-      --amber-soft: rgba(245, 158, 11, 0.14);
-      --indigo: #6366f1;
-      --indigo-soft: rgba(99, 102, 241, 0.16);
-      --danger: #f87171;
-      --danger-soft: rgba(248, 113, 113, 0.14);
+      --muted: #b1c1de;
+      --accent: #00e599;
+      --accent-bright: #2effb5;
+      --accent-glow: rgba(0, 229, 153, 0.28);
+      --pink: #ff5ca8;
+      --pink-soft: rgba(255, 92, 168, 0.16);
+      --amber: #ffb800;
+      --amber-soft: rgba(255, 184, 0, 0.15);
+      --indigo: #38bdf8;
+      --indigo-soft: rgba(56, 189, 248, 0.16);
+      --danger: #ff6b81;
+      --danger-soft: rgba(255, 107, 129, 0.16);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background:
-        radial-gradient(900px 420px at 18% -5%, rgba(16, 185, 129, 0.16), transparent 65%),
-        radial-gradient(850px 420px at 85% 0%, rgba(99, 102, 241, 0.15), transparent 65%),
+        radial-gradient(880px 440px at 14% -4%, rgba(0, 229, 153, 0.20), transparent 64%),
+        radial-gradient(820px 420px at 88% 2%, rgba(255, 92, 168, 0.17), transparent 62%),
+        radial-gradient(700px 400px at 50% 48%, rgba(56, 189, 248, 0.10), transparent 68%),
         var(--bg);
       color: var(--text);
       line-height: 1.55;
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
     }
+    h1, h2, h3, .brand span:first-of-type {
+      font-family: 'Fredoka', 'Plus Jakarta Sans', sans-serif;
+      letter-spacing: -0.015em;
+    }
     .mono { font-family: 'JetBrains Mono', monospace; }
     .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
 
     /* Top Announcement Strip */
     .top-strip {
-      background: linear-gradient(90deg, rgba(16, 185, 129, 0.15), rgba(99, 102, 241, 0.15));
-      border-bottom: 1px solid var(--border-soft);
-      font-size: 0.81rem;
-      padding: 8px 0;
-      color: var(--muted);
+      background: linear-gradient(90deg, rgba(0, 229, 153, 0.18), rgba(255, 92, 168, 0.18), rgba(56, 189, 248, 0.18));
+      border-bottom: 1px solid rgba(46, 255, 181, 0.28);
+      font-size: 0.82rem;
+      padding: 9px 0;
+      color: var(--panda-frost);
     }
     .top-strip-inner {
       display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
     }
-    .top-strip strong { color: var(--accent-bright); font-weight: 700; }
+    .top-strip strong { color: var(--accent-bright); font-weight: 800; }
 
     /* Sticky Navbar */
     header {
       border-bottom: 1px solid var(--border-soft);
-      background: rgba(7, 11, 22, 0.88);
-      backdrop-filter: blur(14px);
+      background: rgba(8, 9, 15, 0.86);
+      backdrop-filter: blur(16px);
       position: sticky;
       top: 0;
       z-index: 50;
@@ -72,134 +82,164 @@
       padding: 13px 0; gap: 16px; flex-wrap: wrap;
     }
     .brand {
-      display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.35rem;
-      letter-spacing: -0.03em; color: var(--text); text-decoration: none;
+      display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.48rem;
+      color: var(--text); text-decoration: none;
     }
     .brand-logo-wrap {
-      width: 40px; height: 40px; border-radius: 12px;
-      background: linear-gradient(135deg, rgba(16,185,129,0.22), rgba(99,102,241,0.22));
-      border: 1px solid rgba(52, 211, 153, 0.45);
+      width: 44px; height: 44px; border-radius: 14px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border: 2px solid var(--accent-bright);
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.18);
+      box-shadow: 0 0 20px rgba(0, 229, 153, 0.35), inset 0 0 12px rgba(255, 92, 168, 0.25);
     }
     .brand-badge {
-      background: rgba(16, 185, 129, 0.15); color: var(--accent-bright);
-      border: 1px solid rgba(52, 211, 153, 0.38);
-      font-size: 0.72rem; font-weight: 700; padding: 3px 9px; border-radius: 999px;
-      letter-spacing: 0.03em;
+      background: linear-gradient(135deg, rgba(0, 229, 153, 0.2), rgba(255, 92, 168, 0.22));
+      color: var(--accent-bright);
+      border: 1px solid rgba(46, 255, 181, 0.5);
+      font-size: 0.72rem; font-weight: 800; padding: 4px 10px; border-radius: 999px;
+      letter-spacing: 0.04em; font-family: 'Plus Jakarta Sans', sans-serif;
     }
     .nav-links {
-      display: flex; align-items: center; gap: 18px; font-size: 0.88rem; font-weight: 600;
+      display: flex; align-items: center; gap: 18px; font-size: 0.89rem; font-weight: 700;
     }
     .nav-links a { color: var(--muted); text-decoration: none; transition: color 0.15s; }
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover { color: var(--accent-bright); }
     .allowance-bar {
       display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
     }
     .pill {
-      background: var(--card); border: 1px solid var(--border);
-      padding: 6px 12px; border-radius: 999px; font-size: 0.8rem; color: var(--muted);
+      background: linear-gradient(180deg, #161f33, #101625);
+      border: 1px solid var(--border);
+      padding: 6px 13px; border-radius: 999px; font-size: 0.8rem; color: var(--panda-frost);
       display: inline-flex; align-items: center; gap: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
     }
-    .pill strong { color: var(--accent-bright); font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; }
+    .pill strong { color: var(--accent-bright); font-family: 'JetBrains Mono', monospace; font-size: 0.83rem; }
     .dot-live {
-      width: 7px; height: 7px; border-radius: 50%; background: var(--accent-bright);
-      box-shadow: 0 0 8px var(--accent-bright);
+      width: 8px; height: 8px; border-radius: 50%; background: var(--accent-bright);
+      box-shadow: 0 0 10px var(--accent-bright);
     }
 
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 10px 18px; border-radius: 10px; font-weight: 700; font-size: 0.9rem;
-      cursor: pointer; border: none; text-decoration: none; transition: all 0.15s ease;
-      font-family: inherit;
+      padding: 10px 18px; border-radius: 12px; font-weight: 800; font-size: 0.9rem;
+      cursor: pointer; border: none; text-decoration: none; transition: all 0.16s ease;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
-    .btn:hover { transform: translateY(-1px); }
+    .btn:hover { transform: translateY(-2px); }
     .btn-primary {
-      background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
-      color: #042117;
-      box-shadow: 0 4px 18px rgba(16, 185, 129, 0.28);
+      background: linear-gradient(135deg, #2effb5 0%, #00e599 55%, #10b981 100%);
+      color: #041f14;
+      box-shadow: 0 6px 22px rgba(0, 229, 153, 0.36);
     }
-    .btn-primary:hover { box-shadow: 0 6px 22px rgba(16, 185, 129, 0.42); }
+    .btn-primary:hover { box-shadow: 0 8px 28px rgba(46, 255, 181, 0.52); }
     .btn-outline {
-      background: rgba(22, 34, 63, 0.65); color: var(--text);
+      background: rgba(24, 32, 51, 0.85); color: var(--text);
       border: 1px solid var(--border);
     }
-    .btn-outline:hover { border-color: var(--accent-bright); background: var(--card-hover); }
+    .btn-outline:hover { border-color: var(--pink); background: var(--card-hover); }
     .btn-amber {
-      background: rgba(245, 158, 11, 0.15); color: #fcd34d;
-      border: 1px solid rgba(245, 158, 11, 0.45);
+      background: linear-gradient(135deg, rgba(255, 92, 168, 0.20), rgba(255, 184, 0, 0.20));
+      color: #ffe484;
+      border: 1px solid rgba(255, 184, 0, 0.55);
     }
-    .btn-amber:hover { background: rgba(245, 158, 11, 0.25); }
+    .btn-amber:hover { background: linear-gradient(135deg, rgba(255, 92, 168, 0.32), rgba(255, 184, 0, 0.32)); }
 
-    /* Hero Section */
-    .hero { padding: 34px 0 20px; text-align: center; }
+    /* Hero Section with Creative Panda Badge */
+    .hero { padding: 34px 0 22px; text-align: center; position: relative; }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(52, 211, 153, 0.35);
+      background: linear-gradient(90deg, rgba(0, 229, 153, 0.16), rgba(255, 92, 168, 0.18));
+      border: 1px solid rgba(46, 255, 181, 0.45);
       color: var(--accent-bright);
-      padding: 5px 14px; border-radius: 999px;
-      font-size: 0.8rem; font-weight: 700; margin-bottom: 14px;
+      padding: 6px 16px; border-radius: 999px;
+      font-size: 0.81rem; font-weight: 800; margin-bottom: 14px;
+      box-shadow: 0 4px 20px rgba(0, 229, 153, 0.15);
+    }
+    .hero-mascot-strip {
+      display: inline-flex; align-items: center; gap: 14px;
+      background: linear-gradient(135deg, rgba(248, 250, 252, 0.97), rgba(238, 244, 255, 0.95));
+      color: #0b0f19;
+      padding: 8px 18px 8px 10px;
+      border-radius: 999px;
+      border: 2px solid var(--accent-bright);
+      box-shadow: 0 10px 30px rgba(0, 229, 153, 0.25);
+      margin-bottom: 16px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .hero-mascot-strip .bamboo-tag {
+      background: #08090f; color: var(--accent-bright);
+      padding: 3px 9px; border-radius: 999px; font-size: 0.74rem; font-weight: 800;
     }
     .hero h1 {
-      font-size: clamp(2.05rem, 3.8vw, 3.15rem); font-weight: 800;
-      letter-spacing: -0.035em; max-width: 920px; margin: 0 auto 12px; line-height: 1.12;
+      font-size: clamp(2.15rem, 4vw, 3.35rem); font-weight: 700;
+      max-width: 940px; margin: 0 auto 12px; line-height: 1.12;
     }
     .hero h1 .grad {
-      background: linear-gradient(90deg, #34d399 0%, #6ee7b7 45%, #818cf8 100%);
+      background: linear-gradient(90deg, #2effb5 0%, #38bdf8 48%, #ff5ca8 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
     .hero p {
-      color: var(--muted); font-size: 1.04rem; max-width: 770px; margin: 0 auto 20px;
+      color: var(--muted); font-size: 1.05rem; max-width: 780px; margin: 0 auto 22px;
     }
 
-    /* Exam Switcher Bar */
+    /* Exam Switcher Bar (Panda Bamboo Pill Dock) */
     .switcher-wrap {
-      background: rgba(17, 26, 48, 0.85);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 12px 16px;
-      margin: 0 auto 22px;
+      background: linear-gradient(180deg, rgba(24, 32, 51, 0.94), rgba(15, 20, 34, 0.96));
+      border: 1.5px solid rgba(46, 255, 181, 0.35);
+      border-radius: 18px;
+      padding: 13px 18px;
+      margin: 0 auto 24px;
       display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.42), 0 0 24px rgba(0, 229, 153, 0.10);
     }
     .switcher-label {
-      font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
-      color: var(--muted); display: flex; align-items: center; gap: 6px;
+      font-size: 0.79rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--accent-bright); display: flex; align-items: center; gap: 6px;
     }
     .track-tabs {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; flex: 1;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; flex: 1;
     }
     .track-tab {
-      background: var(--bg-elev); border: 1px solid var(--border); color: var(--muted);
-      padding: 7px 13px; border-radius: 10px; font-weight: 700; font-size: 0.83rem;
-      cursor: pointer; transition: all 0.14s; display: inline-flex; align-items: center; gap: 6px;
+      background: #0d1220; border: 1.5px solid var(--border); color: var(--panda-frost);
+      padding: 8px 14px; border-radius: 12px; font-weight: 800; font-size: 0.84rem;
+      cursor: pointer; transition: all 0.15s; display: inline-flex; align-items: center; gap: 7px;
       text-decoration: none;
     }
     .track-tab .cat-dot {
-      width: 6px; height: 6px; border-radius: 50%; background: #64748b;
+      width: 7px; height: 7px; border-radius: 50%; background: #64748b;
     }
-    .track-tab.hs .cat-dot { background: #38bdf8; }
-    .track-tab.grad .cat-dot { background: #34d399; }
-    .track-tab.lic .cat-dot { background: #f59e0b; }
+    .track-tab.hs .cat-dot { background: #38bdf8; box-shadow: 0 0 6px #38bdf8; }
+    .track-tab.grad .cat-dot { background: #2effb5; box-shadow: 0 0 6px #2effb5; }
+    .track-tab.lic .cat-dot { background: #ff5ca8; box-shadow: 0 0 6px #ff5ca8; }
     .track-tab.active, .track-tab:hover {
-      background: rgba(16, 185, 129, 0.18); color: #ffffff;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      color: #08090f;
       border-color: var(--accent-bright);
-      box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.35);
+      box-shadow: 0 4px 16px rgba(46, 255, 181, 0.35);
+      transform: translateY(-1px);
     }
 
-    /* Interactive Drill & Socratic Tutor Grid */
+    /* Interactive Drill & Socratic Tutor Grid (Panda Tuxedo Contrast Cards) */
     .drill-grid {
-      display: grid; grid-template-columns: 1.28fr 1fr; gap: 20px; margin-bottom: 42px;
+      display: grid; grid-template-columns: 1.28fr 1fr; gap: 22px; margin-bottom: 44px;
       align-items: stretch;
     }
     @media (max-width: 960px) { .drill-grid { grid-template-columns: 1fr; } }
     .panel {
-      background: linear-gradient(180deg, rgba(22, 34, 63, 0.72) 0%, rgba(17, 26, 48, 0.95) 100%);
-      border: 1px solid var(--border);
-      border-radius: 18px; padding: 22px;
-      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.32);
+      background: linear-gradient(180deg, rgba(24, 32, 51, 0.92) 0%, rgba(14, 19, 32, 0.98) 100%);
+      border: 1.5px solid var(--border);
+      border-radius: 22px; padding: 24px;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.45);
       display: flex; flex-direction: column; justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .panel::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, #2effb5, #38bdf8, #ff5ca8);
     }
     .panel-header {
       display: flex; justify-content: space-between; align-items: center;
@@ -207,60 +247,70 @@
       padding-bottom: 12px; border-bottom: 1px solid var(--border-soft);
     }
     .tag {
-      font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
-      color: #fde68a; background: var(--amber-soft);
-      border: 1px solid rgba(245, 158, 11, 0.35);
-      padding: 4px 10px; border-radius: 7px;
+      font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
+      color: #ffe484; background: var(--amber-soft);
+      border: 1px solid rgba(255, 184, 0, 0.45);
+      padding: 4px 11px; border-radius: 8px;
     }
     .tag-green {
-      color: var(--accent-bright); background: rgba(16, 185, 129, 0.14);
-      border-color: rgba(52, 211, 153, 0.35);
+      color: var(--accent-bright); background: rgba(0, 229, 153, 0.16);
+      border-color: rgba(46, 255, 181, 0.45);
     }
     .tag-indigo {
-      color: #a5b4fc; background: var(--indigo-soft);
-      border-color: rgba(99, 102, 241, 0.35);
+      color: #ff9ed2; background: var(--pink-soft);
+      border-color: rgba(255, 92, 168, 0.45);
     }
     .q-switcher {
-      display: inline-flex; align-items: center; gap: 5px;
+      display: inline-flex; align-items: center; gap: 6px;
     }
     .q-pill-btn {
       background: var(--bg-elev); border: 1px solid var(--border); color: var(--muted);
-      font-size: 0.75rem; font-weight: 700; padding: 4px 9px; border-radius: 6px; cursor: pointer;
+      font-size: 0.76rem; font-weight: 800; padding: 5px 10px; border-radius: 8px; cursor: pointer;
     }
     .q-pill-btn.active {
-      background: var(--accent); color: #042117; border-color: var(--accent-bright);
+      background: var(--accent-bright); color: #052014; border-color: var(--accent-bright);
+      box-shadow: 0 0 12px rgba(46, 255, 181, 0.4);
     }
 
     .question-meta {
       display: flex; justify-content: space-between; align-items: center;
       font-size: 0.8rem; color: var(--muted); margin-bottom: 10px; flex-wrap: wrap; gap: 8px;
     }
+    /* Crisp Panda Cream Question Card for High-Contrast Readability */
     .question-stem {
-      font-size: 0.99rem; margin-bottom: 16px; color: var(--text);
-      background: rgba(7, 11, 22, 0.65); padding: 16px 18px; border-radius: 12px;
-      border: 1px solid var(--border); line-height: 1.6;
+      font-size: 1.01rem; margin-bottom: 16px;
+      color: #0b101e;
+      background: linear-gradient(180deg, #ffffff 0%, #eef4ff 100%);
+      padding: 18px 20px; border-radius: 16px;
+      border: 2px solid rgba(46, 255, 181, 0.55);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+      line-height: 1.62;
+      font-weight: 600;
       white-space: pre-line;
     }
-    .choices { display: flex; flex-direction: column; gap: 9px; }
+    .choices { display: flex; flex-direction: column; gap: 10px; }
     .choice-btn {
-      text-align: left; background: rgba(13, 20, 38, 0.9); border: 1px solid var(--border);
-      color: var(--text); padding: 11px 14px; border-radius: 11px; cursor: pointer;
-      font-size: 0.92rem; transition: all 0.14s; font-family: inherit;
+      text-align: left; background: rgba(14, 19, 33, 0.95); border: 1.5px solid var(--border);
+      color: var(--text); padding: 12px 15px; border-radius: 13px; cursor: pointer;
+      font-size: 0.93rem; font-weight: 600; transition: all 0.14s; font-family: inherit;
       display: flex; flex-direction: column; gap: 6px;
     }
-    .choice-btn:hover { border-color: var(--accent-bright); background: var(--card-hover); }
+    .choice-btn:hover {
+      border-color: var(--accent-bright); background: var(--card-hover);
+      transform: translateX(3px);
+    }
     .choice-btn.correct {
       border-color: var(--accent-bright);
-      background: rgba(16, 185, 129, 0.16);
-      box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.4);
+      background: rgba(0, 229, 153, 0.20);
+      box-shadow: 0 0 0 1px rgba(46, 255, 181, 0.5);
     }
     .choice-btn.wrong {
       border-color: var(--danger);
       background: var(--danger-soft);
     }
     .choice-explain {
-      font-size: 0.82rem; padding-top: 6px; border-top: 1px dashed rgba(255,255,255,0.14);
-      color: #e2e8f0; display: none;
+      font-size: 0.83rem; padding-top: 7px; border-top: 1px dashed rgba(255,255,255,0.18);
+      color: #f1f5f9; display: none; font-weight: 500;
     }
     .choice-btn.show-explain .choice-explain { display: block; }
 
@@ -274,44 +324,48 @@
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px;
     }
     .step-btn {
-      background: var(--bg-elev); border: 1px solid var(--border); color: var(--muted);
-      padding: 8px 10px; border-radius: 10px; font-size: 0.77rem; font-weight: 700;
+      background: #0d1220; border: 1.5px solid var(--border); color: var(--muted);
+      padding: 9px 11px; border-radius: 12px; font-size: 0.77rem; font-weight: 700;
       cursor: pointer; text-align: left; transition: all 0.15s; font-family: inherit;
     }
-    .step-btn strong { display: block; color: var(--text); font-size: 0.8rem; margin-bottom: 2px; }
+    .step-btn strong { display: block; color: var(--text); font-size: 0.81rem; margin-bottom: 2px; }
     .step-btn:hover, .step-btn.unlocked {
       border-color: var(--accent-bright);
-      background: rgba(16, 185, 129, 0.13);
+      background: linear-gradient(135deg, rgba(0, 229, 153, 0.20), rgba(56, 189, 248, 0.16));
       color: var(--accent-bright);
+      box-shadow: 0 4px 14px rgba(0, 229, 153, 0.22);
     }
     .tutor-messages {
       display: flex; flex-direction: column; gap: 10px; margin: 10px 0 14px;
       min-height: 220px; max-height: 340px; overflow-y: auto; padding-right: 4px;
     }
     .bubble {
-      background: rgba(7, 11, 22, 0.72); border: 1px solid var(--border);
-      padding: 12px 14px; border-radius: 12px; font-size: 0.88rem; line-height: 1.5;
+      background: rgba(9, 12, 22, 0.88); border: 1px solid var(--border);
+      padding: 13px 15px; border-radius: 14px; font-size: 0.89rem; line-height: 1.52;
     }
-    .bubble.panda { border-left: 3px solid var(--accent-bright); }
+    .bubble.panda {
+      border-left: 4px solid var(--accent-bright);
+      background: linear-gradient(90deg, rgba(0, 229, 153, 0.10), rgba(9, 12, 22, 0.92));
+    }
     .bubble.trap-card {
-      border-left: 3px solid var(--amber);
-      background: rgba(245, 158, 11, 0.08);
-      border-color: rgba(245, 158, 11, 0.32);
+      border-left: 4px solid var(--pink);
+      background: linear-gradient(90deg, rgba(255, 92, 168, 0.12), rgba(255, 184, 0, 0.08));
+      border-color: rgba(255, 92, 168, 0.38);
     }
     .bubble-header {
       display: flex; align-items: center; justify-content: space-between;
-      font-size: 0.76rem; font-weight: 700; color: var(--accent-bright);
-      margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em;
+      font-size: 0.76rem; font-weight: 800; color: var(--accent-bright);
+      margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.04em;
     }
-    .bubble.trap-card .bubble-header { color: #fcd34d; }
+    .bubble.trap-card .bubble-header { color: #ff9ed2; }
 
     /* Section Headings */
     .section-head { text-align: center; margin-bottom: 26px; }
     .section-head h2 {
-      font-size: clamp(1.65rem, 2.8vw, 2.25rem); font-weight: 800; letter-spacing: -0.025em;
+      font-size: clamp(1.7rem, 2.9vw, 2.35rem); font-weight: 700;
       margin-bottom: 8px;
     }
-    .section-head p { color: var(--muted); max-width: 680px; margin: 0 auto; font-size: 0.98rem; }
+    .section-head p { color: var(--muted); max-width: 680px; margin: 0 auto; font-size: 0.99rem; }
 
     /* All 10 Exam Tracks Matrix */
     .tracks-section { margin: 18px 0 52px; }
@@ -321,34 +375,35 @@
     @media (max-width: 1080px) { .tracks-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 600px) { .tracks-grid { grid-template-columns: 1fr; } }
     .track-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 14px; padding: 16px; cursor: pointer;
+      background: linear-gradient(180deg, #151c2e 0%, #0f1422 100%);
+      border: 1.5px solid var(--border);
+      border-radius: 16px; padding: 17px; cursor: pointer;
       transition: all 0.16s; display: flex; flex-direction: column; justify-content: space-between;
       text-decoration: none; color: var(--text);
     }
     .track-card:hover, .track-card.active {
       border-color: var(--accent-bright);
-      background: var(--card-alt);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+      background: linear-gradient(180deg, #1b253d 0%, #131b2e 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 26px rgba(0, 229, 153, 0.22);
     }
     .track-card-top {
       display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;
     }
     .track-route {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
-      color: var(--accent-bright); background: rgba(16, 185, 129, 0.12);
-      padding: 2px 7px; border-radius: 6px; border: 1px solid rgba(52, 211, 153, 0.3);
+      font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700;
+      color: #041f14; background: var(--accent-bright);
+      padding: 2px 8px; border-radius: 6px;
     }
-    .track-cat { font-size: 0.7rem; color: var(--muted); font-weight: 600; }
-    .track-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; }
+    .track-cat { font-size: 0.71rem; color: var(--muted); font-weight: 700; }
+    .track-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
     .track-sections {
       font-size: 0.77rem; color: var(--muted); margin-bottom: 12px; line-height: 1.4;
     }
     .track-card-foot {
       display: flex; justify-content: space-between; align-items: center;
       font-size: 0.76rem; padding-top: 9px; border-top: 1px solid var(--border-soft);
-      color: #cbd5e1; font-weight: 600;
+      color: #e2e8f0; font-weight: 700;
     }
 
     /* Freemium Pricing Section */
@@ -359,32 +414,32 @@
     @media (max-width: 920px) { .pricing-grid { grid-template-columns: 1fr; } }
     .price-card {
       background: linear-gradient(180deg, var(--card-alt) 0%, var(--card) 100%);
-      border: 1px solid var(--border);
-      border-radius: 18px; padding: 26px;
+      border: 1.5px solid var(--border);
+      border-radius: 20px; padding: 26px;
       display: flex; flex-direction: column; justify-content: space-between;
       position: relative;
     }
     .price-card.featured {
       border-color: var(--accent-bright);
-      box-shadow: 0 0 0 1px var(--accent-bright), 0 16px 40px rgba(16, 185, 129, 0.18);
+      box-shadow: 0 0 0 1px var(--accent-bright), 0 18px 44px rgba(0, 229, 153, 0.22);
     }
     .popular-ribbon {
       position: absolute; top: -12px; right: 20px;
-      background: linear-gradient(135deg, #34d399, #10b981);
-      color: #042117; font-size: 0.72rem; font-weight: 800;
-      padding: 4px 11px; border-radius: 999px; letter-spacing: 0.04em; text-transform: uppercase;
+      background: linear-gradient(135deg, #2effb5, #38bdf8, #ff5ca8);
+      color: #05160e; font-size: 0.73rem; font-weight: 800;
+      padding: 4px 12px; border-radius: 999px; letter-spacing: 0.04em; text-transform: uppercase;
     }
-    .price-tier-name { font-size: 1.15rem; font-weight: 800; margin: 10px 0 4px; }
+    .price-tier-name { font-size: 1.2rem; font-weight: 700; margin: 10px 0 4px; font-family: 'Fredoka', sans-serif; }
     .price-sub { font-size: 0.83rem; color: var(--muted); margin-bottom: 12px; }
-    .price-amount { font-size: 2.3rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 4px; }
+    .price-amount { font-size: 2.35rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 4px; }
     .price-amount span { font-size: 0.92rem; font-weight: 500; color: var(--muted); }
     .price-pass-pill {
-      display: inline-block; background: rgba(99, 102, 241, 0.16);
-      border: 1px solid rgba(99, 102, 241, 0.4); color: #c7d2fe;
-      font-size: 0.79rem; font-weight: 700; padding: 4px 10px; border-radius: 8px;
+      display: inline-block; background: var(--pink-soft);
+      border: 1px solid rgba(255, 92, 168, 0.45); color: #ffb3d9;
+      font-size: 0.8rem; font-weight: 700; padding: 5px 11px; border-radius: 9px;
       margin-bottom: 16px;
     }
-    .price-list { list-style: none; margin: 10px 0 22px; color: #dbeafe; font-size: 0.89rem; }
+    .price-list { list-style: none; margin: 10px 0 22px; color: #eef4ff; font-size: 0.89rem; }
     .price-list li {
       margin-bottom: 10px; display: flex; align-items: flex-start; gap: 9px; line-height: 1.45;
     }
@@ -393,7 +448,7 @@
     /* Footer */
     footer {
       border-top: 1px solid var(--border); padding: 32px 0 44px;
-      color: var(--muted); font-size: 0.82rem; background: rgba(7, 11, 22, 0.9);
+      color: var(--muted); font-size: 0.82rem; background: rgba(6, 8, 14, 0.94);
     }
     .footer-grid {
       display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap;
@@ -403,13 +458,13 @@
       display: flex; flex-wrap: wrap; gap: 10px;
     }
     .footer-routes a {
-      color: var(--muted); text-decoration: none; font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem; padding: 4px 8px; border-radius: 6px; background: var(--card);
-      border: 1px solid var(--border-soft);
+      color: var(--panda-frost); text-decoration: none; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; padding: 4px 9px; border-radius: 7px; background: var(--card);
+      border: 1px solid var(--border);
     }
-    .footer-routes a:hover { color: var(--accent-bright); border-color: var(--accent-bright); }
+    .footer-routes a:hover { color: #05160e; background: var(--accent-bright); border-color: var(--accent-bright); }
     .compliance-box {
-      background: rgba(17, 26, 48, 0.7); border: 1px solid var(--border);
+      background: rgba(19, 24, 38, 0.8); border: 1px solid var(--border);
       padding: 14px 18px; border-radius: 12px; font-size: 0.8rem; color: var(--muted); line-height: 1.5;
     }
   </style>
@@ -417,7 +472,7 @@
 <body id="top">
   <div class="top-strip">
     <div class="container top-strip-inner">
-      <span>🐼 <strong>CramPanda Free Forever Base Tier:</strong> 15 Blueprint-Calibrated Practice Questions/Day + 10 Socratic AI Tutor Turns/Day ($0 · No Card Required)</span>
+      <span>🐼🎋 <strong>CramPanda Free Forever Base Tier:</strong> 15 Blueprint-Calibrated Practice Questions/Day + 10 Socratic AI Tutor Turns/Day ($0 · No Card Required)</span>
       <span class="mono">Single-Domain Multi-Exam Engine · crampanda.com</span>
     </div>
   </div>
@@ -426,24 +481,29 @@
     <div class="container nav">
       <a href="/" class="brand" onclick="selectExam('sat', true); return false;">
         <div class="brand-logo-wrap">
-          <svg width="28" height="28" viewBox="0 0 64 64" fill="none" aria-label="CramPanda mascot">
-            <circle cx="15" cy="15" r="9.5" fill="#070b16" stroke="#34d399" stroke-width="3.2"/>
-            <circle cx="49" cy="15" r="9.5" fill="#070b16" stroke="#34d399" stroke-width="3.2"/>
-            <circle cx="32" cy="36" r="22" fill="#f8fafc" stroke="#34d399" stroke-width="3.2"/>
-            <ellipse cx="23" cy="34" rx="6" ry="7.2" fill="#070b16"/>
-            <ellipse cx="41" cy="34" rx="6" ry="7.2" fill="#070b16"/>
-            <circle cx="24.2" cy="32.5" r="2.3" fill="#34d399"/>
-            <circle cx="39.8" cy="32.5" r="2.3" fill="#34d399"/>
-            <ellipse cx="32" cy="42" rx="4.2" ry="2.8" fill="#070b16"/>
-            <path d="M26.5 47.2 Q32 51.5 37.5 47.2" stroke="#070b16" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+          <svg width="32" height="32" viewBox="0 0 64 64" fill="none" aria-label="CramPanda mascot">
+            <circle cx="14" cy="14" r="9.5" fill="#08090f" stroke="#2effb5" stroke-width="3"/>
+            <circle cx="50" cy="14" r="9.5" fill="#08090f" stroke="#ff5ca8" stroke-width="3"/>
+            <circle cx="32" cy="36" r="22" fill="#f8fafc" stroke="#2effb5" stroke-width="3"/>
+            <ellipse cx="22.5" cy="34" rx="6.5" ry="7.5" fill="#08090f"/>
+            <ellipse cx="41.5" cy="34" rx="6.5" ry="7.5" fill="#08090f"/>
+            <rect x="14" y="27" width="17" height="13" rx="4" stroke="#38bdf8" stroke-width="2.4" fill="rgba(56,189,248,0.12)"/>
+            <rect x="33" y="27" width="17" height="13" rx="4" stroke="#ff5ca8" stroke-width="2.4" fill="rgba(255,92,168,0.12)"/>
+            <line x1="31" y1="33" x2="33" y2="33" stroke="#2effb5" stroke-width="2.5"/>
+            <circle cx="23.5" cy="33" r="2.4" fill="#2effb5"/>
+            <circle cx="40.5" cy="33" r="2.4" fill="#2effb5"/>
+            <ellipse cx="16.5" cy="41.5" rx="3.2" ry="1.8" fill="#ff5ca8" opacity="0.75"/>
+            <ellipse cx="47.5" cy="41.5" rx="3.2" ry="1.8" fill="#ff5ca8" opacity="0.75"/>
+            <ellipse cx="32" cy="42" rx="4" ry="2.7" fill="#08090f"/>
+            <path d="M26.5 47.2 Q32 51.8 37.5 47.2" stroke="#08090f" stroke-width="2.8" stroke-linecap="round" fill="none"/>
           </svg>
         </div>
         <span>CramPanda</span>
-        <span class="brand-badge">SOCRATIC AI TUTOR</span>
+        <span class="brand-badge">BAMBOO AI TUTOR</span>
       </a>
 
       <nav class="nav-links">
-        <a href="#drill-workspace">Live AI Drill</a>
+        <a href="#drill-workspace">Live Panda Drill</a>
         <a href="#exam-tracks">All 10 Exam Tracks</a>
         <a href="#pricing">Free vs. Pro Pricing</a>
       </nav>
@@ -458,16 +518,26 @@
 
   <main class="container">
     <section class="hero">
-      <div class="hero-eyebrow" id="route-badge">
-        <span>⚡ INSTANT ZERO-LOGIN DRILL</span>
-        <span>·</span>
-        <span class="mono" id="hero-route-pill">crampanda.com/sat</span>
+      <div class="hero-mascot-strip">
+        <svg width="28" height="28" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <circle cx="14" cy="14" r="9" fill="#08090f"/>
+          <circle cx="50" cy="14" r="9" fill="#08090f"/>
+          <circle cx="32" cy="35" r="21" fill="#ffffff" stroke="#08090f" stroke-width="3"/>
+          <ellipse cx="23" cy="34" rx="6" ry="7" fill="#08090f"/>
+          <ellipse cx="41" cy="34" rx="6" ry="7" fill="#08090f"/>
+          <circle cx="24" cy="32.5" r="2.2" fill="#00e599"/>
+          <circle cx="40" cy="32.5" r="2.2" fill="#00e599"/>
+          <ellipse cx="32" cy="41.5" rx="3.8" ry="2.5" fill="#08090f"/>
+        </svg>
+        <span>Meet <strong>CramPanda</strong> — Your Socratic Study Panda</span>
+        <span class="bamboo-tag">🎋 ZERO-LOGIN LIVE DRILL</span>
+        <span class="mono" id="hero-route-pill" style="color:#059669; font-weight:800;">crampanda.com/sat</span>
       </div>
-      <h1>Study Smarter with Your <span class="grad">Free Socratic AI Panda Tutor</span></h1>
-      <p>Don't just memorize static answer keys. Pick any of our 10 exam tracks below, try a realistic blueprint-calibrated question right now, and let CramPanda guide you through the <strong>3-step logic</strong> and <strong>every trap answer</strong>.</p>
+      <h1>Outsmart Every Trap Answer with Your <span class="grad">Creative Socratic AI Panda</span></h1>
+      <p>Don't just memorize static answer keys. Pick any of our 10 exam tracks below, test a high-contrast panda drill card right now, and let CramPanda coach you through the <strong>3-step logic</strong> and <strong>every distractor trap</strong>.</p>
 
       <div class="switcher-wrap" id="drill-workspace">
-        <span class="switcher-label">🎯 Select Exam Track:</span>
+        <span class="switcher-label">🎋 Pick Your Exam Track:</span>
         <div class="track-tabs" id="track-tabs"></div>
       </div>
     </section>
@@ -487,7 +557,7 @@
 
           <div class="question-meta">
             <span class="mono" id="exam-route-url">Route: crampanda.com/sat · Item #sat-math-001</span>
-            <span style="color: var(--accent-bright); font-weight: 600;">✓ 100% Original Blueprint-Calibrated</span>
+            <span style="color: var(--accent-bright); font-weight: 700;">🎋 100% Original Blueprint-Calibrated</span>
           </div>
 
           <div class="question-stem" id="question-stem"></div>
@@ -497,7 +567,7 @@
         <div class="drill-actions">
           <div style="display:flex; gap:8px; flex-wrap:wrap;">
             <button class="btn btn-primary" id="hint-btn">🐼 Ask Panda for Next Socratic Hint</button>
-            <button class="btn btn-amber" id="trap-btn">🔍 Reveal All Trap-Answer Breakdowns</button>
+            <button class="btn btn-amber" id="trap-btn">🪤 Reveal All Trap-Answer Breakdowns</button>
           </div>
           <button class="btn btn-outline" id="next-q-btn" style="padding: 9px 14px; font-size: 0.83rem;">Next Question / Track →</button>
         </div>
@@ -508,10 +578,10 @@
         <div>
           <div class="panel-header">
             <div style="display:flex; align-items:center; gap:9px;">
-              <span style="font-size:1.25rem;">🐼</span>
+              <span style="font-size:1.35rem;">🐼</span>
               <div>
-                <strong style="display:block; font-size:0.98rem;">CramPanda Socratic AI Tutor</strong>
-                <span style="font-size:0.75rem; color:var(--muted);">Guided 3-Step Reasoning · Never spoils the answer on Step 1</span>
+                <strong style="display:block; font-size:1rem;">CramPanda Bamboo AI Coach</strong>
+                <span style="font-size:0.76rem; color:var(--muted);">Guided 3-Step Reasoning · Never spoils the answer on Step 1</span>
               </div>
             </div>
             <span class="brand-badge" id="tutor-step-badge">3-Step Socratic Mode</span>
@@ -537,8 +607,8 @@
 
         <div style="border-top: 1px solid var(--border-soft); padding-top: 13px; display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;">
           <div>
-            <span style="font-size: 0.78rem; color: var(--muted); display:block;">Free Daily Allowance: <strong>15 Qs + 10 AI Turns ($0)</strong></span>
-            <span style="font-size: 0.82rem; color: var(--accent-bright); font-weight:700;" id="exam-price-note">HS Pro Unlimited: $29/mo or $99 4-Mo Pass</span>
+            <span style="font-size: 0.78rem; color: var(--muted); display:block;">Free Daily Bamboo Allowance: <strong>15 Qs + 10 AI Turns ($0)</strong></span>
+            <span style="font-size: 0.82rem; color: var(--accent-bright); font-weight:800;" id="exam-price-note">HS Pro Unlimited: $29/mo or $99 4-Mo Pass</span>
           </div>
           <a href="#pricing" class="btn btn-outline" style="padding: 8px 13px; font-size: 0.82rem;">Compare Free vs. Pro</a>
         </div>
@@ -550,7 +620,7 @@
       <div class="section-head">
         <span class="tag tag-green" style="margin-bottom:8px; display:inline-block;">SINGLE-DOMAIN MULTI-EXAM ARCHITECTURE</span>
         <h2>10 Dedicated Exam Tracks Under One Roof</h2>
-        <p>Click any exam track below to switch the live Socratic AI workspace and preview its dedicated route (<span class="mono">/sat</span>, <span class="mono">/lsat</span>, <span class="mono">/mcat</span>, and more).</p>
+        <p>Click any exam track below to switch the live Socratic Panda workspace and preview its dedicated route (<span class="mono">/sat</span>, <span class="mono">/lsat</span>, <span class="mono">/mcat</span>, and more).</p>
       </div>
       <div class="tracks-grid" id="tracks-grid"></div>
     </section>
@@ -568,7 +638,7 @@
         <div class="price-card">
           <div>
             <span class="tag tag-green">$0 Forever Base Tier</span>
-            <div class="price-tier-name">Free Daily Study Plan</div>
+            <div class="price-tier-name">Free Daily Bamboo Plan</div>
             <div class="price-sub">For daily habit building & Socratic concept mastery</div>
             <div class="price-amount">$0 <span>/ forever</span></div>
             <div class="price-pass-pill">No credit card required · All 10 exam tracks</div>
@@ -626,11 +696,11 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <strong style="color: var(--text); font-size: 1rem;">🐼 CramPanda (crampanda.com)</strong>
+          <strong style="color: var(--text); font-size: 1.05rem;">🐼🎋 CramPanda (crampanda.com)</strong>
           <p style="margin-top: 4px; max-width: 460px;">Study Smarter with Your Free Socratic AI Panda Tutor. Single-domain multi-exam test preparation engineered for high school, graduate, medical, law, and licensing candidates.</p>
         </div>
         <div>
-          <div style="font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; color: var(--text);">Dedicated Exam Routes</div>
+          <div style="font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; color: var(--text);">Dedicated Exam Routes</div>
           <div class="footer-routes" id="footer-routes"></div>
         </div>
       </div>
